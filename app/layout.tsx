@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: "Sâm Ngọc Linh Bảo Ly",
     images: [
       {
-        url: "/Rượu Sâm Ngọc Linh Gold 500ML_3.png",
+        url: "/gold3.png",
         width: 1200,
         height: 630,
         alt: "Sâm Ngọc Linh Bảo Ly - Thảo Dược Quý",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
       "Sâm Ngọc Linh Bảo Ly cam kết cung cấp sản phẩm sâm Ngọc Linh chất lượng cao, giúp bồi bổ sức khỏe và tăng cường miễn dịch.",
     images: [
       {
-        url: "/Rượu Sâm Ngọc Linh Gold 500ML_3.png",
+        url: "/gold3.png",
         alt: "Sâm Ngọc Linh Bảo Ly - Thảo Dược Quý",
       },
     ],

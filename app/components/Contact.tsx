@@ -36,7 +36,7 @@ const ContactPage: React.FC = () => {
             {/* Left Side - Image */}
             <div className="w-full md:w-1/2 relative h-[25rem] sm:h-[30rem] md:h-screen rounded-xl">
                 <Image
-                    src="/Rượu Sâm Ngọc Linh Gold 500ML.png"
+                    src="/gold.png"
                     alt="Contact Image"
                     fill
                     className="rounded-xl object-cover"

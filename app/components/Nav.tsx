@@ -23,14 +23,14 @@ export default function Nav() {
     { title: 'Cửa Hàng', href: '/san-pham' },
     {
       title: 'Sản Phẩm', href: '/san-pham', dropdown: [
-        { title: 'Rượu Sâm Ngọc Linh', href: '/san-pham/ruou-sam-ngoc-linh', image: '/Rượu Sâm Ngọc Linh Gold 500ML.png' },
-        { title: 'Rượu Lá Sâm Ngọc Linh', href: '/san-pham/ruou-la-sam-ngoc-linh', image: '/Rượu lá Sâm Ngọc Linh Bình 3 lít.png' },
-        { title: 'Rượu Hoa Sâm Ngọc Linh', href: '/san-pham/ruou-hoa-sam-ngoc-linh', image: '/Rượu hoa Sâm Ngọc Linh Bình 1 lít.png' },
-        { title: 'Rượu Sâm Ngọc Linh Cây Và Củ', href: '/san-pham/ruou-sam-ngoc-linh-cay-cu', image: '/Rượu sâm Ngọc linh bình cây và củ (4,5 lít)_2.png' },
-        { title: 'Rượu Hồng Đào Sâm Ngọc Linh', href: '/san-pham/ruou-hong-dao-sam-ngoc-linh', image: '/Rượu Hồng Đào Sâm Ngọc Linh 500ml.png' },
-        { title: 'Các Sản Phẩm Chế Biến', href: '/san-pham/che-bien', image: '/Sâm Ngọc linh ngâm mật ong 100ML.png' },
-        { title: 'Sâm Ngọc Linh Củ Tươi', href: '/san-pham/sam-ngoc-linh-cu-tuoi', image: '/Sam-NL-cu-tuoi-loai-5-1.jpg' },
-        { title: 'Cây Giống Và Hạt Sâm Ngọc Linh', href: '/san-pham/cay-giong-hat', image: '/hat-sam-ngoc-linh-1.jpg' },
+        { title: 'Rượu Sâm Ngọc Linh', href: '/san-pham/ruou-sam-ngoc-linh', image: '/gold.png' },
+        { title: 'Rượu Lá Sâm Ngọc Linh', href: '/san-pham/ruou-la-sam-ngoc-linh', image: '/la3l.png' },
+        { title: 'Rượu Hoa Sâm Ngọc Linh', href: '/san-pham/ruou-hoa-sam-ngoc-linh', image: '/hoa1l.png' },
+        { title: 'Rượu Sâm Ngọc Linh Cây Và Củ', href: '/san-pham/ruou-sam-ngoc-linh-cay-cu', image: '/caycu.png' },
+        { title: 'Rượu Hồng Đào Sâm Ngọc Linh', href: '/san-pham/ruou-hong-dao-sam-ngoc-linh', image: '/hongdao.png' },
+        { title: 'Các Sản Phẩm Chế Biến', href: '/san-pham/che-bien', image: '/matong.png' },
+        { title: 'Sâm Ngọc Linh Củ Tươi', href: '/san-pham/sam-ngoc-linh-cu-tuoi', image: '/cutuoi.jpg' },
+        { title: 'Cây Giống Và Hạt Sâm Ngọc Linh', href: '/san-pham/cay-giong-hat', image: '/hatsam.jpg' },
       ]
     },
     { title: 'Giới Thiệu', href: '/gioi-thieu' },

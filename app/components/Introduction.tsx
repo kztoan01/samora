@@ -190,7 +190,7 @@ export default function IntroSection() {
                             <div className="md:w-7/12 relative rounded-xl">
                                 <div className="h-[40rem] rounded-lg overflow-hidden">
                                     <Image
-                                        src="/Rượu Sâm Ngọc Linh Gold 500ML.png"
+                                        src="/gold.png"
                                         alt="Sâm Ngọc Linh Bảo Ly"
                                         layout="fill"
                                         objectFit="cover"
