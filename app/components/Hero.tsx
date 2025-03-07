@@ -10,7 +10,7 @@ import Nav from './Nav';
 // Sample image data - replace with your actual image URLs
 const carouselImages = [
   {
-    src: "/Rượu Sâm Ngọc Linh Gold 500ML_3.png",
+    src: "/gold3.png",
     alt: "Rượu Sâm Ngọc Linh",
     title: "Rượu Sâm Ngọc Linh",
     subtitle: "Tinh hoa từ củ sâm lâu năm, vị đắng nhẹ hậu ngọt, bồi bổ cơ thể",

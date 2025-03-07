@@ -83,7 +83,7 @@ export default function CategorySection() {
                         <div className="relative rounded-lg overflow-hidden h-[50vh] lg:h-[calc(100vh-140px)]">
                             <div className="relative w-full h-full">
                                 <Image
-                                    src="/Rượu Sâm Ngọc Linh Gold 500ML.png"
+                                    src="/gold.png"
                                     alt="Left side image"
                                     fill
                                     style={{ objectFit: "cover" }}
