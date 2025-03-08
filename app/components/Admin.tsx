@@ -31,6 +31,10 @@ interface CustomerInfo {
   district: string;
   ward: string;
   notes?: string;
+  fullAddress: string;
+  cityCode: string;
+  districtCode: string;
+  wardCode: string;
 }
 
 interface Order {
@@ -580,6 +584,10 @@ const OrdersPage = () => {
                   <div className="mb-2">
                     <span className="font-medium">Phường/Xã:</span>{" "}
                     {selectedOrder.customerInfo.ward}
+                  </div>
+                  <div className="mb-2">
+                    <span className="font-medium">Địa chỉ đầy đủ:</span>{" "}
+                    {selectedOrder.customerInfo.fullAddress}
                   </div>
                   {selectedOrder.customerInfo.notes && (
                     <div>
