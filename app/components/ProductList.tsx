@@ -56,7 +56,7 @@ export default function ProductList({ products }: ProductListProps) {
                                 <img
                                     src={product.images[0]}
                                     alt={product.name}
-                                    className="w-full h-[15rem] sm:h-[20rem] md:h-[25rem] lg:h-[30rem] xl:h-[35rem] object-cover transition-all group-hover:blur-sm"
+                                    className="w-full h-[15rem] sm:h-[20rem] md:h-[25rem] lg:h-[30rem] xl:h-[35rem] object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
 
 

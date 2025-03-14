@@ -44,45 +44,6 @@ export default function HeroSection() {
     "✨ Nhập mã 'SAMTET' giảm thêm 10% cho đơn hàng đầu tiên ✨"
   ];
 
-  // Auto rotate banner messages
-  // useEffect(() => {
-  // const interval = setInterval(() => {
-  //     setBannerMessage((prev) => (prev + 1) % bannerMessages.length);
-  // }, 4000);
-  // return () => clearInterval(interval);
-  // }, [bannerMessages.length]);
-
-
-
-  // Auto rotate carousel
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     nextSlide();
-  //   }, 100000);
-  //   return () => clearInterval(interval);
-  // }, []);
-  const navItems = [
-    { title: 'Cửa Hàng', href: '/san-pham' },
-    {
-      title: 'Sản Phẩm', href: '/san-pham', dropdown: [
-        { title: 'Rượu Sâm Ngọc Linh', href: '/san-pham/ruou-sam-ngoc-linh', image: '/hero.jpg' },
-        { title: 'Rượu Lá Sâm Ngọc Linh', href: '/san-pham/ruou-la-sam-ngoc-linh', image: '/hero.jpg' },
-        { title: 'Rượu Hoa Sâm Ngọc Linh', href: '/san-pham/ruou-hoa-sam-ngoc-linh', image: '/hero.jpg' },
-        { title: 'Rượu Sâm Ngọc Linh Cây Và Củ', href: '/san-pham/ruou-sam-ngoc-linh-cay-cu', image: '/hero.jpg' },
-        { title: 'Rượu Hồng Đào Sâm Ngọc Linh', href: '/san-pham/ruou-hong-dao-sam-ngoc-linh', image: '/hero.jpg' },
-        { title: 'Các Sản Phẩm Chế Biến', href: '/san-pham/che-bien', image: '/hero.jpg' },
-        { title: 'Sâm Ngọc Linh Củ Tươi', href: '/san-pham/sam-ngoc-linh-cu-tuoi', image: '/hero.jpg' },
-        { title: 'Cây Giống Và Hạt Sâm Ngọc Linh', href: '/san-pham/cay-giong-hat', image: '/hero.jpg' },
-      ]
-    },
-    { title: 'Giới Thiệu', href: '/about' },
-    { title: 'Liên Hệ', href: '/contact' },
-  ];
-  const topRightNavItems = [
-    { title: 'Đăng Nhập', href: '/login' },
-    { title: 'Đăng Ký', href: '/register' },
-    { title: 'Giỏ Hàng', href: '/cart' },
-  ];
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [touchStart, setTouchStart] = useState<number>(0);
@@ -101,16 +62,6 @@ export default function HeroSection() {
     setTimeout(() => setAutoplayEnabled(true), 10000);
   };
 
-  // Autoplay functionality
-  // useEffect(() => {
-  //   let interval: NodeJS.Timeout;
-  //   if (autoplayEnabled) {
-  //     interval = setInterval(() => {
-  //       setCurrentSlide((prev) => (prev === carouselImages.length - 1 ? 0 : prev + 1));
-  //     }, 5000); // Change slide every 5 seconds
-  //   }
-  //   return () => clearInterval(interval);
-  // }, [carouselImages.length, autoplayEnabled]);
 
   // Touch handlers for swipe functionality
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>): void => {
@@ -134,126 +85,151 @@ export default function HeroSection() {
   };
   return (
     <div className="h-screen w-full max-w-8xl mx-auto p-4 space-y-3 bg-white">
-    {/* Moving banner */}
-    <motion.div
-      className="bg-blue-700 text-white p-2 rounded-xl overflow-hidden relative"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      {/* Container with gradient */}
-      <div className="absolute inset-0 z-10 pointer-events-none"
-        style={{
-          background: "linear-gradient(90deg, rgba(37, 99, 235, 1) 0%, rgba(37, 99, 235, 0) 15%, rgba(37, 99, 235, 0) 85%, rgba(37, 99, 235, 1) 100%)"
-        }}
-      />
-  
+      {/* Moving banner */}
       <motion.div
-        initial={{ x: "100%" }}
-        animate={{ x: "-100%" }}
-        transition={{
-          x: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 30,
-            ease: "linear",
-          },
-        }}
-        className="text-center text-sm font-normal whitespace-nowrap flex gap-20"
+        className="bg-blue-700 text-white p-2 rounded-xl overflow-hidden relative"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
       >
-        {[...bannerMessages, ...bannerMessages].map((message, index) => (
-          <span key={index}>{message}</span>
-        ))}
-      </motion.div>
-    </motion.div>
-  
-    {/* Carousel container */}
-    <div
-      className="relative w-full flex-1 h-[calc(100vh-5rem)] min-h-[18rem] rounded-xl overflow-hidden"
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-    >
-      {/* Navigation Menu */}
-      <Nav />
-  
-      {/* Carousel */}
-      <div className="w-full h-full relative">
-        {carouselImages.map((image, index) => (
-          <motion.div
-            key={index}
-            className="absolute top-0 left-0 w-full h-full"
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: currentSlide === index ? 1 : 0,
-              zIndex: currentSlide === index ? 10 : 0
-            }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="relative w-full h-full bg-[#D1D1CE]">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className={`object-cover ${image.src == "/sam.png" ? "object-[50%_25%]" : "object-[50%_55%]"}`}
-                priority={index === 0} // Prioritize loading the first image
-              />
-  
-              {/* Content overlay */}
-              <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 z-20 w-[90%] sm:w-[80%] md:w-[60%] lg:max-w-sm">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{
-                    opacity: currentSlide === index ? 1 : 0,
-                    y: currentSlide === index ? 0 : 20
-                  }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="backdrop-blur-md bg-blue-700/70 p-3 sm:p-4 rounded-xl text-white"
-                >
-                  <h2 className="text-base sm:text-lg font-bold mb-1">{image.title}</h2>
-                  <p className="text-gray-200 mb-1 text-xs sm:text-sm">{image.subtitle}</p>
-                  <Link
-                    href={image.link}
-                    className="text-zinc-100 hover:text-zinc-300 text-xs sm:text-sm transition duration-200"
-                  >
-                    Xem Thêm
-                  </Link>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-  
-        {/* Navigation buttons */}
-        <button
-          onClick={prevSlide}
-          className="hidden sm:block absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 backdrop-blur-sm text-white p-1 sm:p-2 rounded-full hover:bg-white/40 transition-all"
-          aria-label="Previous slide"
+        {/* Container with gradient */}
+        <div className="absolute inset-0 z-10 pointer-events-none"
+          style={{
+            background: "linear-gradient(90deg, rgba(37, 99, 235, 1) 0%, rgba(37, 99, 235, 0) 15%, rgba(37, 99, 235, 0) 85%, rgba(37, 99, 235, 1) 100%)"
+          }}
+        />
+
+        <motion.div
+          initial={{ x: "100%" }}
+          animate={{ x: "-100%" }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 30,
+              ease: "linear",
+            },
+          }}
+          className="text-center text-sm font-normal whitespace-nowrap flex gap-20"
         >
-          <ChevronLeft size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="hidden sm:block absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 backdrop-blur-sm text-white p-1 sm:p-2 rounded-full hover:bg-white/40 transition-all"
-          aria-label="Next slide"
-        >
-          <ChevronRight size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
-        </button>
-  
-        {/* Dots navigation */}
-        <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-1 sm:space-x-2">
-          {carouselImages.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${currentSlide === index ? "bg-white scale-125" : "bg-white/50"
-                }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
+          {[...bannerMessages, ...bannerMessages].map((message, index) => (
+            <span key={index}>{message}</span>
           ))}
+        </motion.div>
+      </motion.div>
+
+      {/* Carousel container */}
+      <div
+        className="relative w-full flex-1 h-[calc(100vh-5rem)] min-h-[18rem] rounded-xl overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        {/* Navigation Menu */}
+        <Nav />
+
+        {/* Carousel */}
+        <div className="w-full h-full relative">
+          {carouselImages.map((image, index) => (
+            <motion.div
+              key={index}
+              className="absolute top-0 left-0 w-full h-full"
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: currentSlide === index ? 1 : 0,
+                zIndex: currentSlide === index ? 10 : 0
+              }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="relative w-full h-full bg-[#D1D1CE]">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className={`object-cover ${image.src == "/sam.png" ? "object-[50%_25%]" : "object-[50%_55%]"}`}
+                  priority={index === 0} // Prioritize loading the first image
+                />
+
+                {/* Content overlay */}
+                <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 z-20 w-[90%] sm:w-[80%] md:w-[60%] lg:max-w-sm">
+                  <div className="backdrop-blur-md md:w-[30rem] bg-blue-800/80 p-4 sm:p-5 rounded-xl text-white shadow-lg">
+                    {/* Logo */}
+                    <div className="flex items-center mb-3">
+                      <img
+                        src="/logo.png"
+                        alt="Logo Sâm Ngọc Linh Bảo Ly"
+                        className="h-10 sm:h-24 mr-3"
+                      />
+                      <h1 className="text-lg sm:text-xl font-bold text-amber-400">Sâm Ngọc Linh Bảo Ly</h1>
+                    </div>
+
+                    {/* Tagline */}
+                    <h2 className="text-base sm:text-lg font-bold mb-2">Tinh Hoa Sâm Ngọc Linh</h2>
+
+                    {/* Description */}
+                    <p className="text-gray-100 mb-3 text-sm sm:text-base">
+                      Sản phẩm sâm ngọc linh tự nhiên 100% từ Quảng Nam,
+                      được kiểm định chất lượng và nguồn gốc rõ ràng.
+                    </p>
+
+                    {/* Call to action */}
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                      <Link
+                        href="/san-pham"
+                        className="bg-amber-500 hover:bg-amber-600 text-white py-2 px-4 rounded-lg text-sm font-medium transition duration-300 text-center"
+                      >
+                        Xem Sản Phẩm
+                      </Link>
+
+                      <Link
+                        href="/lien-he"
+                        className="border border-white hover:bg-white hover:text-blue-800 text-white py-2 px-4 rounded-lg text-sm font-medium transition duration-300 text-center"
+                      >
+                        Liên Hệ Ngay
+                      </Link>
+                    </div>
+
+                    {/* Contact info */}
+                    <div className="mt-3 text-xs sm:text-sm text-gray-200">
+                      <p>Hotline: 0987 654 321</p>
+                      <p>Email: info@samngoclinhbaoly.vn</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
+          {/* Navigation buttons */}
+          <button
+            onClick={prevSlide}
+            className="hidden sm:block absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 backdrop-blur-sm text-white p-1 sm:p-2 rounded-full hover:bg-white/40 transition-all"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="hidden sm:block absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 backdrop-blur-sm text-white p-1 sm:p-2 rounded-full hover:bg-white/40 transition-all"
+            aria-label="Next slide"
+          >
+            <ChevronRight size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
+          </button>
+
+          {/* Dots navigation */}
+          <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-1 sm:space-x-2">
+            {carouselImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${currentSlide === index ? "bg-white scale-125" : "bg-white/50"
+                  }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
-  </div>
   );
 }
