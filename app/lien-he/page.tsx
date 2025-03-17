@@ -1,4 +1,5 @@
 import ContactPage from "../components/Contact";
+import ContactBanner from "../components/ContactBanner";
 import FooterSection from "../components/Footer";
 import Nav from "../components/Nav";
 import ShopSection from "../components/Shop";
@@ -10,6 +11,7 @@ export default function Home() {
                 <Nav />
             </div>
       <ContactPage/>
+      <ContactBanner/>
       <FooterSection/>
     </div>
   );

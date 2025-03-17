@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps) {
     }
 
     return {
-        title: product.name,
+        title: product.category + " " +product.name,
         description: product.benefits.substring(0, 160),
     };
 }

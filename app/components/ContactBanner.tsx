@@ -8,13 +8,13 @@ const ContactBanner = () => {
         {/* Số điện thoại */}
         <div className="flex items-center gap-2">
           <Phone size={20} className="text-blue-600" />
-          <span className="font-medium">Hotline: <a href="tel:0905 422 412" className="text-blue-700 hover:underline">0905 422 412</a></span>
+          <span className="font-medium">Hotline: <a href="tel:0903 924 405" className="text-blue-700 hover:underline">0903 924 405</a></span>
         </div>
         
         {/* Nút gọi Zalo */}
         <div className="flex items-center">
           <a 
-            href="https://zalo.me/0905422412" 
+            href="https://zalo.me/0903924405" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-full transition duration-300"
@@ -27,7 +27,7 @@ const ContactBanner = () => {
         {/* Email liên hệ */}
         <div className="flex items-center gap-2">
           <Mail size={20} className="text-blue-600" />
-          <span className="font-medium">Email: <a href="mailto:contact@example.com" className="text-blue-700 hover:underline">contact@example.com</a></span>
+          <span className="font-medium">Email: <a href="mailto:maiphuccl@gmail.com" className="text-blue-700 hover:underline">maiphuccl@gmail.com</a></span>
         </div>
       </div>
     </div>

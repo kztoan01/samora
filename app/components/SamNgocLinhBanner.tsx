@@ -22,16 +22,15 @@ const SamNgocLinhBanner = () => {
       <div className="relative z-10 w-full md:w-1/2 flex justify-center md:justify-end">
         <div className="relative w-72 h-72">
           {/* Bình rượu sâm thứ nhất */}
-          <div className="absolute right-56 md:right-64 lg:right-96 bottom-64 w-48 h-56">
-            <div className="relative w-[38rem] h-[38rem]">
+          <div className="absolute right-56 md:right-52 lg:right-[22rem] xl:right-[30rem] bottom-52 w-48 h-56">
+            <div className="relative w-[35rem] h-[35rem]">
               <img 
-                src="/qb12.png" 
+                src="/SAM94-Photoroom.png" 
                 alt="Bình rượu sâm Ngọc Linh" 
                 className="object-contain w-full h-full"
               />
             </div>
           </div>
-          
 
         </div>
       </div>

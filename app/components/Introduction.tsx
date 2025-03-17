@@ -210,7 +210,7 @@ export default function IntroSection() {
                 </div>
                 {/* Carousel container */}
                 <div className="relative rounded-xl overflow-hidden">
-                    <ProductList products={products} />
+                    <ProductList isChebien={false} products={products} />
                 </div>
             </div>
 

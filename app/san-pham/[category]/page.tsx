@@ -78,7 +78,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         {/* Product list */}
         <div className="relative rounded-xl overflow-hidden">
           {products.length > 0 ? (
-            <ProductList products={products} />
+            <ProductList isChebien={false} products={products} />
           ) : (
             <p className="text-center py-12 text-gray-500">
               Không có sản phẩm nào trong thể loại này.

@@ -61,7 +61,7 @@ export default function ShopSection() {
 
             {/* Product list */}
             <div className="relative rounded-xl overflow-hidden">
-                <ProductList products={products} />
+                <ProductList isChebien={false} products={products} />
             </div>
         </div>
     );

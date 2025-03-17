@@ -173,7 +173,7 @@ export default function ProductsSection() {
             </div>
             {/* Carousel container */}
             <div className="relative rounded-xl overflow-hidden">
-            <ProductList products={products} />
+            <ProductList isChebien={false} products={products} />
             </div>
             <div className="mt-12 text-center">
         <Link href="/san-pham" className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-6 py-3 text-base font-medium text-white shadow-sm transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">

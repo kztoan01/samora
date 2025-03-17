@@ -155,7 +155,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
                         <div className="mt-4 md:mt-6 flex flex-wrap items-center">
                             <span className="text-xl md:text-3xl font-medium text-blue-600">
-                                {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)}
+                            {product.price !== 0 ? new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price) : "Liên Hệ"}
                             </span>
 
                             <span className={` ml-2 md:ml-4 px-2 py-1 text-sm rounded ${product.stock > 0 || product.isAvailable ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>

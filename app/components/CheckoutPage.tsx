@@ -535,9 +535,9 @@ const CheckoutPage = () => {
               {paymentMethod === "banking" && (
                 <div className="mt-3 p-3 bg-gray-50 rounded-md text-sm">
                   <p className="font-medium text-gray-700 mb-1">Thông tin chuyển khoản:</p>
-                  <p>Ngân hàng: <span className="font-medium">Vietcombank</span></p>
-                  <p>Số tài khoản: <span className="font-medium">1234567890</span></p>
-                  <p>Chủ tài khoản: <span className="font-medium">CÔNG TY TNHH SÂM NGỌC LINH</span></p>
+                  <p>Ngân hàng: <span className="font-medium">Sacombank</span></p>
+                  <p>Số tài khoản: <span className="font-medium">0903924405</span></p>
+                  <p>Chủ tài khoản: <span className="font-medium">MAI VAN PHUC</span></p>
                   <p className="mt-2 text-xs text-gray-500">Nội dung chuyển khoản: [Họ tên] - [Số điện thoại]</p>
                 </div>
               )}

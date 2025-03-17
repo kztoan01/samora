@@ -109,11 +109,10 @@ const ContactPage: React.FC = () => {
                         <address className="not-italic text-sm text-gray-600">
                             <p>Địa chỉ: 15 Chế Lan Viên, Phường Tân Thạnh,</p>
                             <p>Thành phố Tam Kỳ, Tỉnh Quảng Nam</p>
-                            <p className="mt-2">Email: baolyco.1123@gmail.com</p>
-                            <p>Hotline: 0905 422 412 hoặc 0935 230 070</p>
-                            <p className="mt-2 font-semibold">Hotline khu vực:</p>
-                            <p>Miền Nam: 0903 924 405</p>
-                            <p>Miền Trung: 0914 482 099</p>
+                            <p className="mt-2">VPDD: 32/5/10 Đường số 12, Phường 11,</p>
+                            <p>Quận Gò Vấp, TP.Hồ Chí Minh</p>
+                            <p className="mt-2">Email: maiphuccl@gmail.com</p>
+                            <p>Hotline: 0903 924 405</p>
                         </address>
                     </div>
 
