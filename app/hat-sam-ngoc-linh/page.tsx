@@ -20,7 +20,7 @@ export default function CuSam() {
         <Nav />
       </div>
       <div className="container mx-auto px-4 py-24">
-        <h1 className="text-3xl font-bold mb-6">Hạt Sâm Ngọc Linh - Bảo Ly</h1>
+        <h1 className="md:text-3xl text-xl font-bold mb-6">Hạt Sâm Ngọc Linh - Bảo Ly</h1>
         <ImageGallery images={galleryImages} />
       </div>
       <FooterSection />

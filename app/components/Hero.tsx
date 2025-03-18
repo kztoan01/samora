@@ -101,7 +101,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="h-screen w-full max-w-8xl mx-auto space-y-3 bg-amber-100  ">
+    <div className="h-screen w-full max-w-8xl mx-auto space-y-3 bg-white  ">
       {/* Header Bar - Logo, Search, Cart */}
       {/* Top Header với thông tin liên hệ */}
       <div className="bg-blue-800 text-white py-2 px-4">
@@ -126,7 +126,7 @@ export default function HeroSection() {
       </div>
 
       {/* Main Header with Logo and Navigation */}
-      <div className="bg-amber-100 py-3 px-4 top-0">
+      <div className="bg-white py-3 px-4 top-0">
         <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
           <div className="flex items-center mb-3 md:mb-0">
             <Image
@@ -143,10 +143,10 @@ export default function HeroSection() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-2">
-            <span className="bg-amber-50 text-amber-700 rounded-full py-1 px-3 text-xs whitespace-nowrap">Chứng nhận bởi Bộ Y Tế</span>
-            <span className="bg-green-50 text-green-600 rounded-full py-1 px-3 text-xs whitespace-nowrap">Sản phẩm OCOP 4 Sao</span>
-            <span className="bg-blue-50 text-blue-600 rounded-full py-1 px-3 text-xs whitespace-nowrap">Đạt tiêu chuẩn FDA</span>
-            <span className="bg-purple-50 text-purple-600 rounded-full py-1 px-3 text-xs whitespace-nowrap">Chứng nhận ISO 9001</span>
+            <span className="bg-amber-100 text-amber-800 rounded-full py-1 px-3 text-xs whitespace-nowrap">Chứng nhận bởi Bộ Y Tế</span>
+            <span className="bg-green-100 text-green-700 rounded-full py-1 px-3 text-xs whitespace-nowrap">Sản phẩm OCOP 4 Sao</span>
+            <span className="bg-blue-100 text-blue-700 rounded-full py-1 px-3 text-xs whitespace-nowrap">Đạt tiêu chuẩn FDA</span>
+            <span className="bg-purple-100 text-purple-700 rounded-full py-1 px-3 text-xs whitespace-nowrap">Chứng nhận ISO 9001</span>
           </div>
         </div>
       </div>
