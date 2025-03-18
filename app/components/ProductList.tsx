@@ -10,6 +10,12 @@ interface ProductListProps {
 
 export default function ProductList({ products, isChebien }: ProductListProps) {
     const [leaves, setLeaves] = useState<Array<{id: number, x: number, y: number, rotation: number, scale: number}>>([]);
+    // Sort products by price (non-zero first, then zero)
+    const sortedProducts = [...products].sort((a, b) => {
+        if (a.price === 0 && b.price !== 0) return 1;
+        if (a.price !== 0 && b.price === 0) return -1;
+        return 0;
+    });
 
     useEffect(() => {
         // Tạo các lá cây ngẫu nhiên khi component mount
@@ -76,7 +82,7 @@ export default function ProductList({ products, isChebien }: ProductListProps) {
 
             {/* Cards container */}
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-0 md:gap-0 relative z-20">
-                {products.map(product => (
+                {sortedProducts.map(product => (
                     <div
                         key={product._id}
                         className="flex-shrink-0 transition-opacity duration-300 md:p-2 p-1 relative"

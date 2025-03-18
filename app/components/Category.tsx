@@ -166,7 +166,7 @@ export default function CategorySection() {
                                 {/* Bottom Right Image (full width on mobile, 2/3 on tablet+) */}
                                 <div className="w-full sm:col-span-2 relative rounded-lg overflow-hidden shadow-lg h-[30vh] sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]">
                                     <Image
-                                        src="/Sâm Yến Bảo Ly – Tổ Yến chưng Sâm Ngọc Linh.png"
+                                        src="/yen.png"
                                         alt="Bottom right image"
                                         layout="fill"
                                         style={{ objectFit: "cover" }}

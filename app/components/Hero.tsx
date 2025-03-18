@@ -206,9 +206,9 @@ export default function HeroSection() {
         }}
         transition={{ duration: 0.6 }}
       >
-        <div className="flex flex-col md:relative w-full h-full bg-[#F5F5F0]">
+        <div className="flex flex-col md:relative w-full h-[80vh] md:h-full bg-[#F5F5F0]">
           {/* Image container with fixed height on mobile */}
-          <div className="relative w-full h-[50vh] md:h-full">
+          <div className="relative w-full h-[80vh] md:h-full">
             <Image
               src={image.src}
               alt={image.alt}

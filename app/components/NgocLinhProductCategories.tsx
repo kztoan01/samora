@@ -35,10 +35,10 @@ const CategoryCard: React.FC<CategoryProps> = ({
           </div>
         </div>
         <div className="p-6">
-          <h3 className="mb-2 text-xl font-bold text-gray-900">{title}</h3>
-          <p className="text-gray-700 font-medium">{description}</p>
+          <h3 className="mb-2 text-lg md:text-xl font-bold text-gray-900">{title}</h3>
+          <p className="text-gray-700 md:text-base text-sm font-medium">{description}</p>
           {price && (
-            <p className="mt-2 text-lg font-semibold text-red-600">{price}</p>
+            <p className="mt-2 text-base md:text-lg font-semibold text-red-600">{price}</p>
           )}
           <div className="mt-4 flex items-center text-blue-500 font-semibold">
             <span>Xem thêm</span>
@@ -79,13 +79,13 @@ const NgocLinhProductCategories: React.FC = () => {
       title: "Hạt Sâm Ngọc Linh",
       description: "Hạt sâm Ngọc Linh quý giá dùng để gieo trồng hoặc làm thuốc, chứa nhiều dược chất có lợi cho sức khỏe. Cung cấp giống sâm chất lượng cao.",
       price: "Giá: Từ 100.000đ/hạt",
-      imageUrl: "/hatsam/7.jpg",
+      imageUrl: "/hatsam.jpg",
       href: "/hat-sam-ngoc-linh",
     },
   ];
 
   return (
-    <section className="mx-auto max-w-8xl px-4 py-16 bg-blue-50 max-md:mt-24">
+    <section className="mx-auto max-w-8xl px-4 pb-8 pt-16 bg-blue-50 max-md:mt-24">
       <div className="text-center">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           <span className="relative">
@@ -104,7 +104,7 @@ const NgocLinhProductCategories: React.FC = () => {
         ))}
       </div>
       
-      <div className="mt-16 text-center">
+      <div className="mt-6 text-center">
       <Link href="/san-pham/ruou-hoa-sam-ngoc-linh" className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 md:px-6 md:py-3 text-xs md:text-base font-medium text-white shadow-sm transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
           Xem tất cả sản phẩm
           <svg className="ml-3 -mr-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

@@ -117,7 +117,7 @@ export default function ProductsSection() {
                 ]);
                 const freeProducts = fetchedProducts.filter((product: Product) => product.price === 0);
 
-            setProducts(freeProducts);
+                setProducts(freeProducts);
                 setCategories(fetchedCategories);
             } catch (err) {
                 setError("Lỗi khi tải dữ liệu.");
@@ -175,16 +175,16 @@ export default function ProductsSection() {
             </div>
             {/* Carousel container */}
             <div className="relative rounded-xl overflow-hidden">
-            <ProductList isChebien={false} products={products} />
+                <ProductList isChebien={false} products={products} />
             </div>
-            <div className="mt-12 text-center">
-        <Link href="/san-pham" className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-6 py-3 text-base font-medium text-white shadow-sm transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-          Xem tất cả sản phẩm
-          <svg className="ml-3 -mr-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </Link>
-      </div>
+            <div className="mt-8 text-center">
+                <Link href="/san-pham" className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 md:px-6 md:py-3 text-xs md:text-base font-medium text-white shadow-sm transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Xem tất cả sản phẩm
+                    <svg className="ml-3 -mr-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </Link>
+            </div>
         </div>
     );
 }
