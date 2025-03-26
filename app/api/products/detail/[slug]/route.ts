@@ -17,7 +17,11 @@ enum ProductCategory {
 interface Price {
   originalPrice: number;
   discountPrice?: number;
-  currency: string;
+}
+
+interface VolumePrice {
+  volume: string;
+  price: Price;
 }
 
 interface Product {
@@ -28,13 +32,12 @@ interface Product {
   slug: string;
   images: string[];
   stock: number;
-  price: number;
+  volumePrices: VolumePrice[];
   isAvailable: boolean;
   ingredients: string; // Thành phần
   benefits: string; // Công dụng
   usageInstructions: string; // Hướng dẫn sử dụng
   storageInstructions: string; // Cách bảo quản
-  volume: string; // Thể tích (ml/l)
 }
 
 export async function GET(

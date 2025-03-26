@@ -2,15 +2,21 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Product } from './api';
 
+// Extended product type with selected volume and price
+interface CartProduct extends Product {
+  selectedVolume?: string;
+  selectedPrice?: number;
+  selectedDiscountPrice?: number;
+}
 
 interface CartItem {
-  product: Product;
+  product: CartProduct;
   quantity: number;
 }
 
 interface CartContextType {
   cart: CartItem[];
-  addToCart: (product: Product, quantity: number) => void;
+  addToCart: (product: CartProduct, quantity: number) => void;
   removeFromCart: (productId: string) => void;
   clearCart: () => void;
   updateQuantity: (productId: string, quantity: number) => void; // New method
@@ -40,14 +46,28 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (product: Product, quantity: number) => {
+  const addToCart = (product: CartProduct, quantity: number) => {
     setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.product._id === product._id);
-      if (existingItem) {
-        return prevCart.map((item) =>
-          item.product._id === product._id ? { ...item, quantity: item.quantity + quantity } : item
-        );
+      // For products with volume prices, check if same product with same volume exists
+      const existingItemIndex = prevCart.findIndex((item) => {
+        if (product.selectedVolume) {
+          return item.product._id === product._id && 
+                 item.product.selectedVolume === product.selectedVolume;
+        }
+        return item.product._id === product._id;
+      });
+
+      if (existingItemIndex !== -1) {
+        // Update existing item
+        const updatedCart = [...prevCart];
+        updatedCart[existingItemIndex] = {
+          ...updatedCart[existingItemIndex],
+          quantity: updatedCart[existingItemIndex].quantity + quantity
+        };
+        return updatedCart;
       }
+      
+      // Add new item
       return [...prevCart, { product, quantity }];
     });
   };

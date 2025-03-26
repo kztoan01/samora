@@ -23,9 +23,12 @@ enum ProductCategory {
 }
 
 interface Price {
-  originalPrice: number;
-  discountPrice?: number;
-  currency: string;
+  originalPrice: number;  // Just keep the original price
+}
+
+interface VolumePrice {
+  volume: string;
+  price: Price;
 }
 
 interface Product {
@@ -36,13 +39,13 @@ interface Product {
   slug: string;
   images: string[];
   stock: number;
-  price: number;
+  volumePrices?: VolumePrice[];
   isAvailable: boolean;
-  ingredients: string;
-  benefits: string;
-  usageInstructions: string; 
-  storageInstructions: string; 
-  volume: string; 
+  ingredients: string; // Thành phần
+  benefits: string; // Công dụng
+  usageInstructions: string; // Hướng dẫn sử dụng
+  storageInstructions: string; // Cách bảo quản
+  price?: number;
 }
 
 
@@ -170,14 +173,38 @@ export async function POST(request: NextRequest) {
       description: formData.get('description') as string,
       category: formData.get('category') as ProductCategory,
       stock: parseInt(formData.get('stock') as string, 10) || 0,
-      price: parseFloat(formData.get('price') as string),
       isAvailable: formData.get('isAvailable') === 'true',
       ingredients: formData.get('ingredients') as string,
       benefits: formData.get('benefits') as string,
       usageInstructions: formData.get('usageInstructions') as string,
       storageInstructions: formData.get('storageInstructions') as string,
-      volume: formData.get('volume') as string,
     };
+
+    // Add volumePrices only if they exist
+    const volumeCount = parseInt(formData.get('volumeCount') as string, 10) || 0;
+    if (volumeCount > 0) {
+      const volumePrices: VolumePrice[] = [];
+      for (let i = 0; i < volumeCount; i++) {
+        const volume = formData.get(`volume${i}`) as string;
+        const originalPrice = parseFloat(formData.get(`originalPrice${i}`) as string);
+        
+        if (volume && !isNaN(originalPrice)) {
+          volumePrices.push({
+            volume,
+            price: {
+              originalPrice
+            }
+          });
+        }
+      }
+      productData.volumePrices = volumePrices;
+    } else {
+      // If no volume prices, use default price
+      const price = parseFloat(formData.get('price') as string);
+      if (!isNaN(price)) {
+        productData.price = price;
+      }
+    }
 
     // ✅ Upload images if provided (Limit: 5MB)
     const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB

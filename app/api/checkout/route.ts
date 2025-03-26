@@ -6,7 +6,9 @@ import { ObjectId } from "mongodb";
 interface ProductItem {
   id: string;
   name: string;
-  price: number;
+  selectedPrice?: number;
+  selectedVolume?: string;
+  price?: number;
   quantity: number;
   images: string[];
 }
@@ -81,7 +83,7 @@ export async function POST(request: NextRequest) {
       
       // Kiểm tra tổng tiền
       const calculatedSubtotal = items.reduce((sum, item) => 
-        sum + (item.product.price * item.quantity), 0);
+        sum + (item.product.selectedPrice * item.quantity), 0);
       
       const calculatedTotal = calculatedSubtotal + shippingFee;
       

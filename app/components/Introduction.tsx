@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import ProductList from './ProductList';
 import { Category, getAllCategories, getAllProducts, Product } from './api';
+import { IntroSkeleton } from './Skeleton';
 
 // Sample image data - replace with your actual image URLs
 const carouselImages = [
@@ -97,19 +97,16 @@ export default function IntroSection() {
     }, []);
 
     if (loading) {
-        return <div className="text-center p-4">Đang tải dữ liệu...</div>;
+        return <IntroSkeleton />;
     }
 
     if (error) {
         return <div className="text-center p-4 text-red-500">{error}</div>;
     }
     return (
-
         <>
             <div className="h-full w-full max-w-8xl mx-auto p-4 space-y-3 bg-white">
-                <div
-                    className="bg-zinc-100 flex items-center justify-center text-black p-6 rounded-xl overflow-hidden relative"
-                >
+                <div className="bg-zinc-100 flex items-center justify-center text-black p-6 rounded-xl overflow-hidden relative">
                     <div className="text-center text-base font-normal">
                         <span>Về Sâm Ngọc Linh Bảo Ly</span>
                     </div>
@@ -153,15 +150,12 @@ export default function IntroSection() {
                                         </ul>
                                     </div>
                                 </div>
-
-                                {/* Image (2/3 width) */}
-
                             </div>
                         </div>
                     </div>
                 </div>
-                {/* 222 */}
 
+                {/* 222 */}
                 <div className="relative rounded-xl overflow-hidden">
                     <div className="max-w-8xl mx-auto relative overflow-hidden">
                         <div className="bg-white rounded-xl overflow-hidden">
@@ -201,9 +195,7 @@ export default function IntroSection() {
                     </div>
                 </div>
 
-                <div
-                    className="bg-zinc-100 flex items-center justify-center text-black p-6 rounded-xl overflow-hidden relative"
-                >
+                <div className="bg-zinc-100 flex items-center justify-center text-black p-6 rounded-xl overflow-hidden relative">
                     <div className="text-center text-base font-normal">
                         <span>Xem Thêm Về Sâm Ngọc Linh</span>
                     </div>
@@ -213,7 +205,6 @@ export default function IntroSection() {
                     <ProductList isChebien={false} products={products} />
                 </div>
             </div>
-
         </>
     );
 }

@@ -5,6 +5,7 @@ import Nav from "./Nav";
 import { Category, getAllCategories, getAllProducts, Product } from "./api";
 import CategoryNav from "./CategoryNav";
 import ProductList from "./ProductList";
+import { ShopSkeleton } from './Skeleton';
 
 export default function ShopSection() {
     const [products, setProducts] = useState<Product[]>([]);
@@ -34,7 +35,7 @@ export default function ShopSection() {
     }, []);
 
     if (loading) {
-        return <div className="text-center p-4">Đang tải dữ liệu...</div>;
+        return <ShopSkeleton />;
     }
 
     if (error) {

@@ -1,6 +1,8 @@
 "use client"
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useScrollAnimation } from './utils/useScrollAnimation';
 
 interface ImageItem {
   id: string;
@@ -21,6 +23,10 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, className = '' }) =
   const [isDragging, setIsDragging] = useState(false);
   const [dragPosition, setDragPosition] = useState({ x: 0, y: 0 });
   const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
+  const { ref, isInView, containerVariants, itemVariants, fadeInVariants } = useScrollAnimation({
+    threshold: 0.1,
+    once: true
+  });
 
   // Reset zoom and position when selected image changes
   useEffect(() => {
@@ -88,14 +94,26 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, className = '' }) =
   };
 
   return (
-    <div className={`${className}`}>
+    <motion.div 
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={containerVariants}
+      className={`${className}`}
+    >
       {/* Gallery Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-8xl mx-auto">
-        {images.map((image) => (
-          <div
+      <motion.div 
+        variants={fadeInVariants}
+        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-8xl mx-auto"
+      >
+        {images.map((image, index) => (
+          <motion.div
             key={image.id}
+            variants={itemVariants}
+            custom={index}
             className="relative aspect-square overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => setSelectedImage(image)}
+            whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
           >
             <Image
               src={image.src}
@@ -104,17 +122,23 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, className = '' }) =
               className="object-cover"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Modal for selected image */}
       {selectedImage && (
-        <div 
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center"
           onClick={() => setSelectedImage(null)}
         >
-          <div 
+          <motion.div 
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 120 }}
             className="relative max-w-full max-h-full overflow-hidden p-4"
             onClick={(e) => e.stopPropagation()}
           >
@@ -147,8 +171,15 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, className = '' }) =
             </div>
 
             {/* Controls */}
-            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center space-x-4 bg-black bg-opacity-50 p-2 rounded-lg">
-              <button
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center space-x-4 bg-black bg-opacity-50 p-2 rounded-lg"
+            >
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 className="p-2 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -158,9 +189,11 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, className = '' }) =
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
-              </button>
+              </motion.button>
               
-              <button
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 className="p-2 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -171,11 +204,13 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, className = '' }) =
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
                 </svg>
-              </button>
+              </motion.button>
               
               <span className="text-white">{Math.round(zoomLevel * 100)}%</span>
               
-              <button
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 className="p-2 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -186,9 +221,11 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, className = '' }) =
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                 </svg>
-              </button>
+              </motion.button>
               
-              <button
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 className="p-2 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -198,22 +235,26 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, className = '' }) =
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
             {/* Close button */}
-            <button
+            <motion.button
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.3)' }}
               className="absolute top-4 right-4 p-2 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all"
               onClick={() => setSelectedImage(null)}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
-            </button>
-          </div>
-        </div>
+            </motion.button>
+          </motion.div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

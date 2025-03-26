@@ -1,137 +1,170 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, FacebookIcon, Headphones, InstagramIcon, Leaf, Settings, Shield, Twitter, Wine } from 'lucide-react';
+import React from 'react';
+import { MapPin, Phone, Mail, Facebook, Instagram, Home, Building, Clock, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { motion } from 'framer-motion';
+import { useScrollAnimation } from './utils/useScrollAnimation';
 
 export default function FooterSection() {
+  const { ref, isInView, containerVariants, itemVariants, fadeInVariants } = useScrollAnimation({
+    threshold: 0.1,
+    once: true
+  });
 
-  const cardData = [
-    {
-      title: 'Sâm Ngọc Linh',
-      description: 'Sản phẩm cao cấp từ thiên nhiên',
-      icon: <Leaf className="h-6 w-6 text-green-600" />
-    },
-    {
-      title: 'Rượu Sâm',
-      description: 'Tinh hoa từ thảo dược',
-      icon: <Wine className="h-6 w-6 text-red-600" />
-    },
-    {
-      title: 'Chứng nhận',
-      description: 'Đạt chuẩn chất lượng',
-      icon: <Shield className="h-6 w-6 text-blue-600" />
-    },
-    {
-      title: 'Tư vấn',
-      description: 'Hỗ trợ 24/7',
-      icon: <Headphones className="h-6 w-6 text-purple-500" />
-    }
-  ];
   return (
-    <footer className="bg-zinc-100 text-black py-12">
-    <div className="container mx-auto px-4">
-      <div className="flex flex-col lg:flex-row">
-        {/* Left Section (2/3 width) */}
-        <div className="lg:w-2/3 mb-8 lg:mb-0 lg:pr-12">
-          <div className="flex items-center mb-6">
-            {/* Logo */}
-            <div className="w-20 h-20 mr-3 relative">
-              <Image
-                src="/logo.png"
-                alt="Company Logo"
-                layout="fill"
-                objectFit="contain"
-                className="rounded-full bg-blue-500"
-              />
-            </div>
-            {/* Company Name */}
-            <h2 className="text-xl font-bold">Bảo Ly</h2>
-          </div>
-  
-          {/* Description */}
-          <p className="text-black mb-6 max-w-2xl">
-            Chúng tôi tự hào là đơn vị tiên phong trong việc sản xuất và phân phối Rượu Sâm Ngọc Linh
-            chất lượng cao, được chế biến từ những củ sâm Ngọc Linh quý hiếm trên dãy Trường Sơn của Việt Nam.
-          </p>
-  
-          {/* Links */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-3">Sản phẩm</h3>
-              <ul className="space-y-2">
-                <li><Link href="#" className="text-black hover:text-blue-600 transition-colors">Sâm Ngọc Linh</Link></li>
-                <li><Link href="#" className="text-black hover:text-blue-600 transition-colors">Rượu Sâm</Link></li>
-                <li><Link href="#" className="text-black hover:text-blue-600 transition-colors">Combo Quà Tặng</Link></li>
-                <li><Link href="#" className="text-black hover:text-blue-600 transition-colors">Sản Phẩm Mới</Link></li>
-              </ul>
-            </div>
-  
-            <div>
-              <h3 className="text-lg font-semibold mb-3">Công ty</h3>
-              <ul className="space-y-2">
-                <li><Link href="#" className="text-black hover:text-blue-600 transition-colors">Giới Thiệu</Link></li>
-                <li><Link href="#" className="text-black hover:text-blue-600 transition-colors">Tuyển Dụng</Link></li>
-                <li><Link href="#" className="text-black hover:text-blue-600 transition-colors">Tin Tức</Link></li>
-                <li><Link href="#" className="text-black hover:text-blue-600 transition-colors">Đối Tác</Link></li>
-              </ul>
-            </div>
-  
-            <div>
-              <h3 className="text-lg font-semibold mb-3">Hỗ trợ</h3>
-              <ul className="space-y-2">
-                <li><Link href="#" className="text-black hover:text-blue-600 transition-colors">Trung Tâm Hỗ Trợ</Link></li>
-                <li><Link href="#" className="text-black hover:text-blue-600 transition-colors">Liên Hệ</Link></li>
-                <li><Link href="#" className="text-black hover:text-blue-600 transition-colors">Chính Sách Bảo Mật</Link></li>
-                <li><Link href="#" className="text-black hover:text-blue-600 transition-colors">Điều Khoản Sử Dụng</Link></li>
-              </ul>
-            </div>
-          </div>
-  
-          {/* CTA Button */}
-          <a
-            href="tel:0905422412"
-            className="bg-blue-500 text-amber-50 font-bold py-2 px-6 rounded-md hover:bg-blue-600 transition-colors inline-block"
+    <motion.footer 
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={containerVariants}
+      className="bg-gradient-to-b from-zinc-50 to-zinc-100 text-black py-12"
+    >
+      <div className="container mx-auto">
+        {/* Top Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {/* Company Info */}
+          <motion.div 
+            variants={itemVariants}
+            className="space-y-4"
           >
-            Liên hệ ngay
-          </a>
+            <div className="flex items-center mb-6">
+              {/* Logo */}
+              <div className="w-16 h-16 mr-3 relative">
+                <Image
+                  src="/logo.png"
+                  alt="Company Logo"
+                  fill
+                  className="rounded-full bg-blue-500 object-contain"
+                />
+              </div>
+              {/* Company Name */}
+              <h2 className="text-xl md:text-2xl font-bold">Sâm Ngọc Linh Bảo Ly</h2>
+            </div>
+            
+            <p className="text-gray-600 mb-6">
+              Chúng tôi tự hào là đơn vị tiên phong trong việc sản xuất và phân phối 
+              Rượu Sâm Ngọc Linh chất lượng cao, được chế biến từ những củ sâm Ngọc Linh 
+              quý hiếm trên dãy Trường Sơn của Việt Nam.
+            </p>
+          </motion.div>
+          
+          {/* Contact Information */}
+          <motion.div variants={itemVariants}>
+            <h3 className="text-lg font-bold mb-4 pb-2 border-b border-gray-200">Thông Tin Liên Hệ</h3>
+            
+            <div className="space-y-4">
+              {/* Main Office */}
+              <motion.div 
+                variants={fadeInVariants}
+                className="flex items-start"
+              >
+                <Home className="h-5 w-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-gray-800">Trụ sở chính:</p>
+                  <p className="text-gray-600">15 Chế Lan Viên, Phường Tân Thạnh, Thành phố Tam Kỳ, Tỉnh Quảng Nam</p>
+                </div>
+              </motion.div>
+              
+              {/* Representative Office */}
+              <motion.div 
+                variants={fadeInVariants}
+                className="flex items-start"
+              >
+                <Building className="h-5 w-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-gray-800">Văn phòng đại diện:</p>
+                  <p className="text-gray-600">32/5/10 Đường số 12, Phường 11, Quận Gò Vấp, TP.Hồ Chí Minh</p>
+                </div>
+              </motion.div>
+              
+              {/* Email */}
+              <motion.div 
+                variants={fadeInVariants}
+                className="flex items-center"
+              >
+                <Mail className="h-5 w-5 text-blue-600 mr-3 flex-shrink-0" />
+                <a href="mailto:maiphuccl@gmail.com" className="text-gray-600 hover:text-blue-600 transition-colors">
+                  maiphuccl@gmail.com
+                </a>
+              </motion.div>
+              
+              {/* Phone */}
+              <motion.div 
+                variants={fadeInVariants}
+                className="flex items-center"
+              >
+                <Phone className="h-5 w-5 text-blue-600 mr-3 flex-shrink-0" />
+                <a href="tel:0903924405" className="text-gray-600 hover:text-blue-600 transition-colors">
+                  Hotline: 0903 924 405
+                </a>
+              </motion.div>
+            </div>
+          </motion.div>
+          
+          {/* Links */}
+          <motion.div variants={itemVariants}>
+            <div>
+              {/* Quick Links */}
+              <div>
+                <h3 className="text-lg font-bold mb-4 pb-2 border-b border-gray-200">Liên Kết Nhanh</h3>
+                <ul className="space-y-2">
+                  <motion.li variants={fadeInVariants}>
+                    <Link href="/gioi-thieu" className="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1" />
+                      <span>Giới Thiệu</span>
+                    </Link>
+                  </motion.li>
+                  <motion.li variants={fadeInVariants}>
+                    <Link href="/san-pham" className="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1" />
+                      <span>Sản Phẩm</span>
+                    </Link>
+                  </motion.li>
+                  <motion.li variants={fadeInVariants}>
+                    <Link href="#chung-chi" className="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1" />
+                      <span>Chứng Chỉ</span>
+                    </Link>
+                  </motion.li>
+                  <motion.li variants={fadeInVariants}>
+                    <Link href="/lien-he" className="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1" />
+                      <span>Liên Hệ</span>
+                    </Link>
+                  </motion.li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
         </div>
-  
-        {/* Right Section (1/3 width) */}
-        <div className="lg:w-1/3 bg-zinc-200 p-6 rounded-lg">
-          <h3 className="text-xl font-bold mb-4 text-black">Hãy giữ liên lạc</h3>
-          <p className="text-black mb-4">
-            Đăng ký để nhận những thông báo và ưu đãi lớn từ Sâm Ngọc Linh Bảo Ly.
+        
+        {/* Bottom Banner */}
+        <motion.div 
+          variants={itemVariants}
+          className="bg-blue-600 text-white p-4 rounded-lg flex flex-col md:flex-row justify-between items-center mb-8"
+        >
+          <p className="text-center md:text-left mb-4 md:mb-0">
+            Liên hệ với chúng tôi để được tư vấn và báo giá tốt nhất!
           </p>
+          <a 
+            href="tel:0903924405" 
+            className="bg-white text-blue-600 hover:bg-blue-50 transition-all font-bold py-2 px-6 rounded-md inline-flex items-center"
+          >
+            <Phone className="h-5 w-5 mr-2" />
+            0903 924 405
+          </a>
+        </motion.div>
   
-          {/* Email Input */}
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-black mb-2">
-              Địa chỉ Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              placeholder="your@email.com"
-              className="w-full px-4 py-2 bg-zinc-100 text-black border border-blue-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-  
-          {/* Submit Button */}
-          <button className="w-full bg-blue-500 hover:bg-blue-600 text-amber-50 font-medium py-2 px-4 rounded-md transition-colors">
-            Đăng Ký
-          </button>
-        </div>
+        {/* Bottom Copyright */}
+        <motion.div 
+          variants={fadeInVariants}
+          className="border-t border-gray-200 pt-8 text-center text-gray-600 text-sm"
+        >
+          <p>© {new Date().getFullYear()} Sâm Ngọc Linh Bảo Ly. All rights reserved.</p>
+        </motion.div>
       </div>
-  
-      {/* Bottom Copyright */}
-      <div className="mt-12 pt-8 border-t border-blue-100 text-center text-black text-sm">
-        <p>© {new Date().getFullYear()} Sâm Ngọc Linh Bảo Ly. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+    </motion.footer>
   );
 }

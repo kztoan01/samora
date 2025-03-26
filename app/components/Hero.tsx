@@ -6,6 +6,7 @@ import { ChevronDown, ChevronLeft, ChevronRight, Search, ShoppingCart, Phone, Ma
 import Image from 'next/image';
 import Link from 'next/link';
 import Nav from './Nav';
+import { useScrollAnimation } from './utils/useScrollAnimation';
 
 // Sample image data - replace with your actual image URLs
 const carouselImages = [
@@ -34,6 +35,7 @@ const carouselImages = [
 
 export default function HeroSection() {
   const [bannerMessage, setBannerMessage] = useState(0);
+  const { ref, isInView, containerVariants, itemVariants } = useScrollAnimation();
 
   const bannerMessages = [
     "🌺 Ưu đãi đặc biệt ngày 8/3 - Giảm 20% cho tất cả sản phẩm Rượu Sâm 🌺",
@@ -101,10 +103,19 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="h-screen w-full max-w-8xl mx-auto space-y-3 bg-white  ">
+    <motion.div 
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={containerVariants}
+      className="h-screen w-full max-w-8xl mx-auto space-y-3 bg-white"
+    >
       {/* Header Bar - Logo, Search, Cart */}
       {/* Top Header với thông tin liên hệ */}
-      <div className="bg-blue-800 text-white py-2 px-4">
+      <motion.div 
+        variants={itemVariants}
+        className="bg-blue-800 text-white py-2 px-4"
+      >
         <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center mb-2 md:mb-0">
             <div className="flex items-center">
@@ -123,10 +134,13 @@ export default function HeroSection() {
             <Link href="/lien-he" className="text-xs hover:text-amber-300">Liên hệ</Link>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Main Header with Logo and Navigation */}
-      <div className="bg-white py-3 px-4 top-0">
+      <motion.div 
+        variants={itemVariants}
+        className="bg-white py-3 px-4 top-0"
+      >
         <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
           <div className="flex items-center mb-3 md:mb-0">
             <Image
@@ -149,13 +163,12 @@ export default function HeroSection() {
             <span className="bg-purple-100 text-purple-700 rounded-full py-1 px-3 text-xs whitespace-nowrap">Chứng nhận ISO 9001</span>
           </div>
         </div>
-      </div>
+      </motion.div>
+      
       {/* Moving promotional banner */}
       <motion.div
+        variants={itemVariants}
         className="bg-blue-700 text-white p-2 overflow-hidden relative"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
       >
         {/* Container with gradient */}
         <div className="absolute inset-0 z-10 pointer-events-none"
@@ -184,7 +197,8 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Carousel container */}
-      <div
+      <motion.div
+        variants={itemVariants}
         className="relative w-full flex-1 h-full min-h-[18rem] rounded-xl overflow-hidden"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -193,34 +207,34 @@ export default function HeroSection() {
         {/* Main Navigation Menu */}
         <Nav />
 
-       {/* Carousel */}
-  <div className="w-full h-full relative">
-    {carouselImages.map((image, index) => (
-      <motion.div
-        key={index}
-        className="absolute top-0 left-0 w-full h-full"
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: currentSlide === index ? 1 : 0,
-          zIndex: currentSlide === index ? 10 : 0
-        }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="flex flex-col md:relative w-full h-[80vh] md:h-full bg-[#F5F5F0]">
-          {/* Image container with fixed height on mobile */}
-          <div className="relative w-full h-[80vh] md:h-full">
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              className={`object-cover ${image.src == "/sam.png" ? "object-[50%_25%]" : "object-[50%_55%]"}`}
-              priority={index === 0}
-            />
-          </div>
-          
-          {/* Content overlay - positioned below on mobile, overlaid on desktop */}
-          <div className="w-full md:absolute md:bottom-8 md:left-8 md:z-20 md:w-[80%] md:max-w-md p-4">
-            <div className="backdrop-blur-md bg-white/90 border-l-4 border-blue-800 p-4 sm:p-5 rounded-r-xl text-black shadow-lg">
+        {/* Carousel */}
+        <div className="w-full h-full relative">
+          {carouselImages.map((image, index) => (
+            <motion.div
+              key={index}
+              className="absolute top-0 left-0 w-full h-full"
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: currentSlide === index ? 1 : 0,
+                zIndex: currentSlide === index ? 10 : 0
+              }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex flex-col md:relative w-full h-[80vh] md:h-full bg-[#F5F5F0]">
+                {/* Image container with fixed height on mobile */}
+                <div className="relative w-full h-[80vh] md:h-full">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className={`object-cover ${image.src == "/sam.png" ? "object-[50%_25%]" : "object-[50%_55%]"}`}
+                    priority={index === 0}
+                  />
+                </div>
+                
+                {/* Content overlay - positioned below on mobile, overlaid on desktop */}
+                <div className="w-full md:absolute md:bottom-8 md:left-8 md:z-20 md:w-[80%] md:max-w-md p-4">
+                  <div className="backdrop-blur-md bg-white/90 border-l-4 border-blue-800 p-4 sm:p-5 rounded-r-xl text-black shadow-lg">
                     {/* Product featured heading */}
                     <div className="bg-blue-800 text-white inline-block px-2 py-1 text-xs mb-3">SẢN PHẨM NỔI BẬT</div>
 
@@ -255,7 +269,7 @@ export default function HeroSection() {
                       </Link>
 
                       <Link
-                       href={image.link}
+                        href={image.link}
                         className="border border-amber-500 bg-amber-500 hover:bg-amber-600 text-white py-2 px-4 rounded-lg text-sm font-medium transition duration-300 text-center flex-1 flex items-center justify-center"
                       >
                         <ShoppingCart className="w-4 h-4 mr-1" /> Mua Ngay
@@ -303,7 +317,7 @@ export default function HeroSection() {
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

@@ -2,6 +2,8 @@
 import { Product } from './api';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useScrollAnimation } from './utils/useScrollAnimation';
 
 interface ProductListProps {
     products: Product[];
@@ -10,12 +12,56 @@ interface ProductListProps {
 
 export default function ProductList({ products, isChebien }: ProductListProps) {
     const [leaves, setLeaves] = useState<Array<{id: number, x: number, y: number, rotation: number, scale: number}>>([]);
+    const { ref, isInView, containerVariants, itemVariants } = useScrollAnimation({
+        threshold: 0.1
+    });
+    
+    // Get min price for each product
+    const getMinPrice = (product: Product) => {
+        if (!product.volumePrices || product.volumePrices.length === 0) {
+            return 0;
+        }
+        
+        const prices = product.volumePrices.map(vp => 
+            vp.price.originalPrice
+        );
+        
+        return Math.min(...prices);
+    };
+    
     // Sort products by price (non-zero first, then zero)
     const sortedProducts = [...products].sort((a, b) => {
-        if (a.price === 0 && b.price !== 0) return 1;
-        if (a.price !== 0 && b.price === 0) return -1;
+        const aMinPrice = getMinPrice(a);
+        const bMinPrice = getMinPrice(b);
+        
+        if (aMinPrice === 0 && bMinPrice !== 0) return 1;
+        if (aMinPrice !== 0 && bMinPrice === 0) return -1;
         return 0;
     });
+
+    // Format price with price range for multiple volumes
+    const formatProductPrice = (product: Product) => {
+        // For products with volume prices
+        if (product.volumePrices && product.volumePrices.length > 0) {
+            const firstPrice = product.volumePrices[0].price.originalPrice;
+            
+            return firstPrice === 0 ? "Liên Hệ" : new Intl.NumberFormat('vi-VN', { 
+                style: 'currency', 
+                currency: 'VND'
+            }).format(firstPrice);
+        }
+        
+        // For products with single price
+        if (product.price !== undefined) {
+            return product.price === 0 ? "Liên Hệ" : new Intl.NumberFormat('vi-VN', { 
+                style: 'currency', 
+                currency: 'VND'
+            }).format(product.price);
+        }
+
+        // Fallback
+        return "Liên Hệ";
+    };
 
     useEffect(() => {
         // Tạo các lá cây ngẫu nhiên khi component mount
@@ -52,7 +98,13 @@ export default function ProductList({ products, isChebien }: ProductListProps) {
     }, []);
 
     return (
-        <div className="max-w-8xl mx-auto mt-4 relative overflow-hidden">
+        <motion.div 
+            ref={ref}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={containerVariants}
+            className="max-w-8xl mx-auto mt-4 relative overflow-hidden"
+        >
             {/* Lá cây trang trí */}
             <div className="absolute inset-0 w-full h-full pointer-events-none z-10">
                 {leaves.map((leaf) => (
@@ -82,9 +134,11 @@ export default function ProductList({ products, isChebien }: ProductListProps) {
 
             {/* Cards container */}
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-0 md:gap-0 relative z-20">
-                {sortedProducts.map(product => (
-                    <div
+                {sortedProducts.map((product, index) => (
+                    <motion.div
                         key={product._id}
+                        variants={itemVariants}
+                        custom={index}
                         className="flex-shrink-0 transition-opacity duration-300 md:p-2 p-1 relative"
                     >
                         <Link href={`/san-pham/chi-tiet/${product.slug}`}>
@@ -104,7 +158,7 @@ export default function ProductList({ products, isChebien }: ProductListProps) {
                                 <nav className="bg-white rounded-br-3xl">
                                     <ul className="flex">
                                         <li key={product._id}>
-                                            <span className="block px-4 py-2 text-[0.60rem] md:text-sm font-semibold text-black transition-all">
+                                            <span className="block px-2 sm:px-4 py-1 sm:py-2 text-[0.55rem] sm:text-xs md:text-sm font-semibold text-black transition-all truncate max-w-[100px] sm:max-w-[120px] md:max-w-none">
                                                 {isChebien ? product.name : product.category}
                                             </span>
                                         </li>
@@ -126,11 +180,14 @@ export default function ProductList({ products, isChebien }: ProductListProps) {
                                 <img
                                     src={product.images[0]}
                                     alt={product.name}
-                                    className="w-full h-[15rem] sm:h-[20rem] md:h-[25rem] lg:h-[30rem] xl:h-[35rem] object-cover transition-transform duration-500 group-hover:scale-110"
+                                    className="w-full h-[12rem] sm:h-[16rem] md:h-[22rem] lg:h-[26rem] xl:h-[30rem] object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
 
-                                <div className="absolute bottom-2 left-2 bg-blue-500 p-2 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                    <p className="text-[0.60rem] md:text-sm font-semibold text-white">{product.price !== 0 ? new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price) : "Liên Hệ"}</p>
+                                {/* Price badge - visible on mobile and on hover for larger screens */}
+                                <div className="absolute bottom-2 left-2 bg-blue-500 p-1.5 sm:p-2 rounded-lg shadow-md sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300">
+                                    <p className="text-[0.55rem] sm:text-xs md:text-sm font-semibold text-white">
+                                        {formatProductPrice(product)}
+                                    </p>
                                 </div>
 
                                 {/* New white box in bottom right */}
@@ -157,12 +214,11 @@ export default function ProductList({ products, isChebien }: ProductListProps) {
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </Link>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
-        </div>
+        </motion.div>
     );
 }

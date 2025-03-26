@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, ReactNode } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion'; // Fixed import
 
 interface ProductDetailProps {
-    content: string;
+    content: ReactNode;
     text: string;
 }
 

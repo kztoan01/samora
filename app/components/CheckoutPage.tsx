@@ -60,8 +60,23 @@ const CheckoutPage = () => {
 
   const [errors, setErrors] = useState<FormErrors>({});
 
+  // Calculate price based on selected price if available, otherwise use first volume price
+  const getItemPrice = (item: any) => {
+    if (item.product.selectedPrice) {
+      return item.product.selectedPrice;
+    }
+    
+    // Fallback to first volume price if available
+    if (item.product.volumePrices && item.product.volumePrices.length > 0) {
+      const firstVolumePrice = item.product.volumePrices[0];
+      return firstVolumePrice.price.discountPrice || firstVolumePrice.price.originalPrice;
+    }
+    
+    return 0;
+  };
+
   const subtotal = cart.reduce(
-    (total, item) => total + item.product.price * item.quantity,
+    (total, item) => total + getItemPrice(item) * item.quantity,
     0
   );
 
@@ -247,7 +262,17 @@ const CheckoutPage = () => {
         // Chuẩn bị dữ liệu đơn hàng để gửi lên server
         const orderData = {
           customerInfo: updatedFormData,     // Sử dụng formData đã cập nhật
-          items: cart,
+          items: cart.map(item => ({
+            product: {
+              _id: item.product._id,
+              name: item.product.name,
+              selectedVolume: item.product.selectedVolume,
+              selectedPrice: item.product.selectedPrice,
+              selectedDiscountPrice: item.product.selectedDiscountPrice,
+              images: item.product.images
+            },
+            quantity: item.quantity
+          })),
           subtotal,
           shippingFee,
           total,
@@ -589,11 +614,11 @@ const CheckoutPage = () => {
                 <div className="ml-4 flex-grow">
                   <h3 className="text-sm font-medium">{item.product.name}</h3>
                   <p className="text-xs text-gray-500 mt-1">
-                    {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.product.price)}
+                    {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(getItemPrice(item))}
                   </p>
                 </div>
                 <div className="text-sm font-medium">
-                  {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.product.price * item.quantity)}
+                  {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(getItemPrice(item) * item.quantity)}
                 </div>
               </div>
             ))}

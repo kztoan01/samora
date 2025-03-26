@@ -1,4 +1,5 @@
-
+import dynamic from 'next/dynamic';
+import React, { Suspense } from 'react';
 import AboutSection from "./components/AboutUs";
 import CategorySection from "./components/Category";
 import FooterSection from "./components/Footer";
@@ -11,6 +12,13 @@ import RuouLaPage from "./components/RuouLaSam";
 import RuouHoaPage from "./components/RuouHoaSam";
 import ContactBanner from "./components/ContactBanner";
 import CertificateGallery from "./components/CertificateGallery";
+import { CategorySkeleton, AboutSkeleton, ContactSkeleton } from "./components/Skeleton";
+
+// Dynamically import components that are not needed immediately
+const AboutSectionDynamic = dynamic(() => import('./components/AboutUs'));
+const CategorySectionDynamic = dynamic(() => import('./components/Category'));
+const ContactBannerDynamic = dynamic(() => import('./components/ContactBanner'));
+
 export default function Home() {
   const certificates = [
     {
@@ -110,17 +118,27 @@ export default function Home() {
     <HeroSection/>
     <NgocLinhProductCategories/>
     <SamNgocLinhBanner/>
-    <RuouLaPage/>
-    <RuouHoaPage/>
-    <ProductsSection/> 
-    <CertificateGallery 
+    
+        <RuouLaPage/>
+        <RuouHoaPage/>
+        <ProductsSection/> 
+    
+    <div id="chung-chi">
+      <CertificateGallery 
         categories={certificateCategories} 
         title="Chứng nhận chất lượng" 
         subtitle="Các giấy tờ pháp lý và chứng nhận của sản phẩm Sâm Ngọc Linh" 
       />
-    <CategorySection/>
-    <AboutSection/>
-    <ContactBanner/>
+    </div>
+    <Suspense fallback={<CategorySkeleton />}>
+        <CategorySectionDynamic />
+    </Suspense>
+    <Suspense fallback={<AboutSkeleton />}>
+        <AboutSectionDynamic />
+    </Suspense>
+    <Suspense fallback={<ContactSkeleton />}>
+        <ContactBannerDynamic />
+    </Suspense>
     <FooterSection/>
     </ReactLenis>
     </div>

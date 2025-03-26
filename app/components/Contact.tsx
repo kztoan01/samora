@@ -1,6 +1,8 @@
 "use client"
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useScrollAnimation } from './utils/useScrollAnimation';
 
 type FormData = {
     name: string;
@@ -13,6 +15,11 @@ const ContactPage: React.FC = () => {
         name: '',
         email: '',
         message: ''
+    });
+    
+    const { ref, isInView, containerVariants, itemVariants, fadeInVariants, slideInVariants } = useScrollAnimation({
+        threshold: 0.1,
+        once: true
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -32,21 +39,36 @@ const ContactPage: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen w-full flex flex-col p-3 space-y-3 md:space-y-0 md:space-x-3 md:flex-row rounded-xl">
+        <motion.div 
+            ref={ref}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={containerVariants}
+            className="min-h-screen w-full flex flex-col p-3 space-y-3 md:space-y-0 md:space-x-3 md:flex-row rounded-xl"
+        >
             {/* Left Side - Image */}
-            <div className="w-full md:w-1/2 relative h-[25rem] sm:h-[30rem] md:h-screen rounded-xl">
+            <motion.div 
+                variants={slideInVariants}
+                className="w-full md:w-1/2 relative h-[25rem] sm:h-[30rem] md:h-screen rounded-xl"
+            >
                 <Image
                     src="/gold.png"
                     alt="Contact Image"
                     fill
                     className="rounded-xl object-cover"
                 />
-            </div>
+            </motion.div>
 
             {/* Right Side - Contact Form and Addresses */}
-            <div className="w-full md:w-1/2 flex flex-col gap-3">
+            <motion.div 
+                variants={itemVariants}
+                className="w-full md:w-1/2 flex flex-col gap-3"
+            >
                 {/* Contact Form Section */}
-                <div className="p-4 sm:p-6 md:p-8 lg:p-12 flex-1 bg-zinc-100 rounded-xl flex flex-col">
+                <motion.div 
+                    variants={fadeInVariants}
+                    className="p-4 sm:p-6 md:p-8 lg:p-12 flex-1 bg-zinc-100 rounded-xl flex flex-col"
+                >
                     {/* Contact Header */}
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-center sm:text-left">Liên hệ chúng tôi</h2>
 
@@ -54,7 +76,10 @@ const ContactPage: React.FC = () => {
                     <form onSubmit={handleSubmit} className="flex flex-col flex-grow justify-end space-y-4 mt-4 md:mt-auto">
 
                         {/* Name & Email Fields */}
-                        <div className="flex flex-col sm:flex-row gap-4">
+                        <motion.div 
+                            variants={itemVariants}
+                            className="flex flex-col sm:flex-row gap-4"
+                        >
                             <input
                                 type="text"
                                 id="name"
@@ -75,10 +100,11 @@ const ContactPage: React.FC = () => {
                                 required
                                 className="flex-1 w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 p-3 border"
                             />
-                        </div>
+                        </motion.div>
 
                         {/* Message Field */}
-                        <textarea
+                        <motion.textarea
+                            variants={itemVariants}
                             id="message"
                             name="message"
                             value={formData.message}
@@ -90,19 +116,28 @@ const ContactPage: React.FC = () => {
                         />
 
                         {/* Submit Button */}
-                        <button
+                        <motion.button
+                            variants={itemVariants}
                             type="submit"
                             className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                         >
                             Gửi đi
-                        </button>
+                        </motion.button>
                     </form>
-                </div>
+                </motion.div>
 
                 {/* Address Section */}
-                <div className="flex flex-col md:flex-row gap-3">
+                <motion.div 
+                    variants={itemVariants}
+                    className="flex flex-col md:flex-row gap-3"
+                >
                     {/* Main Office */}
-                    <div className="w-full md:w-1/2 p-4 sm:p-5 bg-zinc-100 rounded-xl">
+                    <motion.div 
+                        variants={fadeInVariants}
+                        className="w-full md:w-1/2 p-4 sm:p-5 bg-zinc-100 rounded-xl"
+                    >
                         <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">
                             CÔNG TY TNHH MỘT THÀNH VIÊN BẢO LY
                         </h3>
@@ -114,10 +149,13 @@ const ContactPage: React.FC = () => {
                             <p className="mt-2">Email: maiphuccl@gmail.com</p>
                             <p>Hotline: 0903 924 405</p>
                         </address>
-                    </div>
+                    </motion.div>
 
                     {/* Garden Information */}
-                    <div className="w-full md:w-1/2 p-4 sm:p-5 bg-zinc-100 rounded-xl">
+                    <motion.div 
+                        variants={fadeInVariants}
+                        className="w-full md:w-1/2 p-4 sm:p-5 bg-zinc-100 rounded-xl"
+                    >
                         <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">Vườn sâm</h3>
                         <address className="not-italic text-sm text-gray-600">
                             <p>Công ty CP Đầu Tư Phát Triển Dược Liệu Win-Win</p>
@@ -126,10 +164,10 @@ const ContactPage: React.FC = () => {
                             <p className="mt-2">Địa chỉ: Thôn 3, xã Trà Nam,</p>
                             <p>huyện Nam Trà My, tỉnh Quảng Nam</p>
                         </address>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </motion.div>
+                </motion.div>
+            </motion.div>
+        </motion.div>
     );
 };
 

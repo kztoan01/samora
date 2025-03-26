@@ -14,10 +14,14 @@ import { ObjectId } from "mongodb";
   SAM_TUOI = "Sâm Ngọc Linh củ tươi",
 }
 
- interface Price {
+interface Price {
   originalPrice: number;
   discountPrice?: number;
-  currency: string;
+}
+
+interface VolumePrice {
+  volume: string;
+  price: Price;
 }
 
 interface Product {
@@ -28,13 +32,12 @@ interface Product {
   slug: string;
   images: string[];
   stock: number;
-  price: number;
+  volumePrices: VolumePrice[];
   isAvailable: boolean;
   ingredients: string; // Thành phần
   benefits: string; // Công dụng
   usageInstructions: string; // Hướng dẫn sử dụng
   storageInstructions: string; // Cách bảo quản
-  volume: string; // Thể tích (ml/l)
 }
 
 export async function GET(
@@ -119,15 +122,24 @@ export async function PUT(
 
     const productData = await request.json();
 
-    // Ensure price is properly formatted if included
-    if (productData.price) {
-      if (
-        typeof productData.price.originalPrice !== "number" ||
-        typeof productData.price.discountPrice !== "number" ||
-        typeof productData.price.currency !== "string"
-      ) {
-        return NextResponse.json({ error: "Invalid price format" }, { status: 400 });
+    // Ensure volumePrices is properly formatted if included
+    if (productData.volumePrices) {
+      if (!Array.isArray(productData.volumePrices)) {
+        return NextResponse.json({ error: "volumePrices must be an array" }, { status: 400 });
       }
+      
+      for (const vp of productData.volumePrices) {
+        if (typeof vp.volume !== "string" || !vp.price || 
+            typeof vp.price.originalPrice !== "number" ||
+            (vp.price.discountPrice !== undefined && typeof vp.price.discountPrice !== "number")) {
+          return NextResponse.json({ error: "Invalid volume price format" }, { status: 400 });
+        }
+      }
+    }
+
+    // Ensure currency is a string if included
+    if (productData.currency !== undefined && typeof productData.currency !== "string") {
+      return NextResponse.json({ error: "Currency must be a string" }, { status: 400 });
     }
 
     // Ensure stock is a valid number

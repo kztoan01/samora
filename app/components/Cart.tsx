@@ -21,7 +21,28 @@ const Cart = ({ onClose }: CartProps) => {
         onClose();
     };
 
-    const subtotal = cart.reduce((total, item) => total + item.product.price * item.quantity, 0);
+    // Calculate price based on selected price if available, otherwise use first volume price
+    const getItemPrice = (item: any) => {
+        // If item has selected price (from volume prices)
+        if (item.product.selectedPrice) {
+            return item.product.selectedPrice;
+        }
+        
+        // If item has volume prices
+        if (item.product.volumePrices && item.product.volumePrices.length > 0) {
+            const firstVolumePrice = item.product.volumePrices[0];
+            return firstVolumePrice.price.discountPrice || firstVolumePrice.price.originalPrice;
+        }
+        
+        // If item has single price
+        if (item.product.price) {
+            return item.product.price;
+        }
+        
+        return 0;
+    };
+
+    const subtotal = cart.reduce((total, item) => total + getItemPrice(item) * item.quantity, 0);
 
     if (!isOpen) return null;
 
@@ -39,12 +60,22 @@ const Cart = ({ onClose }: CartProps) => {
                 ) : (
                     <div>
                         {cart.map((item) => (
-                            <div key={item.product._id} className="flex justify-between items-center border-b py-4 px-2">
+                            <div key={`${item.product._id}-${item.product.selectedVolume || ''}`} className="flex justify-between items-center border-b py-4 px-2">
                                 <div className="flex items-center">
                                     <img src={item.product.images[0]} alt={item.product.name} className="w-20 h-20 mr-4 rounded-xl" />
                                     <div>
                                         <h3 className="font-medium text-sm">{item.product.name}</h3>
-                                        <p className="text-xs font-semibold mt-2">Giá:  {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.product.price)}</p>
+                                        {item.product.selectedVolume && (
+                                            <p className="text-xs text-gray-600 mt-1">
+                                                Dung tích: {item.product.selectedVolume}
+                                            </p>
+                                        )}
+                                        <p className="text-xs font-semibold mt-2">
+                                            Giá: {new Intl.NumberFormat('vi-VN', { 
+                                                style: 'currency', 
+                                                currency: 'VND' 
+                                            }).format(getItemPrice(item))}
+                                        </p>
                                         <div className="flex items-center mt-4">
                                             <button
                                                 onClick={() => updateQuantity(item.product._id, item.quantity - 1)}

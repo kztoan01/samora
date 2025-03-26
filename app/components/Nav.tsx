@@ -151,17 +151,20 @@ export default function Nav() {
                               }}
                               className="bg-zinc-100 rounded-xl"
                             >
-                              <a
+                              <Link
                                 href={subItem.href}
                                 className="flex items-center text-sm p-2 text-black rounded-xl font-semibold hover:bg-blue-100"
                               >
-                                <img
+                                <Image
                                   src={subItem.image}
                                   alt={subItem.title}
+                                  width={112}
+                                  height={112}
+                                  loading="lazy"
                                   className="h-28 w-28 mr-4 rounded-xl"
                                 />
-                                {subItem.title}
-                              </a>
+                                <span>{subItem.title}</span>
+                              </Link>
                             </motion.li>
                           ))}
                         </ul>

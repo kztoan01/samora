@@ -12,7 +12,9 @@ import axios from "axios";
 interface ProductItem {
   id: string;
   name: string;
-  price: number;
+  selectedVolume?: string;
+  selectedPrice: number;
+  selectedDiscountPrice?: number;
   quantity: number;
   images: string[];
 }
@@ -638,13 +640,13 @@ const OrdersPage = () => {
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {formatCurrency(item.product.price)}
+                          {formatCurrency(item.product.selectedPrice)}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {item.quantity}
+                          {item.quantity} x {formatCurrency(item.product.selectedPrice)}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {formatCurrency(item.product.price * item.quantity)}
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                          {formatCurrency(item.product.selectedPrice * item.quantity)}
                         </td>
                       </tr>
                     ))}

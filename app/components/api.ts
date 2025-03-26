@@ -4,10 +4,22 @@
 import axios from "axios";
 
 // Định nghĩa TypeScript interfaces
+export interface Price {
+  originalPrice: number;
+}
+
+export interface VolumePrice {
+  volume: string;
+  price: Price;
+}
+
 export interface Product {
   _id: string;
   name: string;
+  volumePrices: VolumePrice[];
   price: number;
+  selectedVolume?: string;
+  selectedPrice?: number;
   slug: string;
   description?: string;
   images: string[];
@@ -18,7 +30,6 @@ export interface Product {
   benefits: string; // Công dụng
   usageInstructions: string; // Hướng dẫn sử dụng
   storageInstructions: string; // Cách bảo quản
-  volume: string; // Thể tích (ml/l)
 }
 
 export interface Category {

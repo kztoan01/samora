@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useScrollAnimation } from './utils/useScrollAnimation';
 
 // Sample image data - replace with your actual image URLs
 const carouselImages = [
@@ -31,6 +32,10 @@ const carouselImages = [
 export default function CategorySection() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [bannerMessage, setBannerMessage] = useState(0);
+    const { ref, isInView, containerVariants, itemVariants, fadeInVariants, slideInVariants } = useScrollAnimation({
+        threshold: 0.1,
+        once: true
+    });
 
     const bannerMessages = [
         "🔥 Summer sale - Up to 50% off 🔥",
@@ -64,23 +69,36 @@ export default function CategorySection() {
     ];
     
     return (
-        <div className="min-h-screen w-full max-w-8xl mx-auto p-2 sm:p-4 space-y-2 sm:space-y-3 bg-white">
+        <motion.div 
+            ref={ref}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={containerVariants}
+            className="min-h-screen w-full max-w-8xl mx-auto p-2 sm:p-4 space-y-2 sm:space-y-3 bg-white"
+        >
             {/* Moving banner */}
-            <div
+            <motion.div
+                variants={itemVariants}
                 className="bg-zinc-100 flex items-center justify-center text-black p-4 md:p-6 rounded-xl overflow-hidden relative"
             >
                 <div className="text-center text-sm md:text-base font-normal">
                     <span>Sản Phẩm Từ Sâm Ngọc Linh</span>
                 </div>
-            </div>
+            </motion.div>
 
             {/* Main Content Container - adjusted for better mobile experience */}
-            <div className="relative rounded-xl overflow-hidden">
+            <motion.div 
+                variants={itemVariants}
+                className="relative rounded-xl overflow-hidden"
+            >
                 <div className="max-w-8xl mx-auto relative overflow-hidden">
                     {/* Changed to flex-col on mobile and grid on lg */}
                     <div className="flex flex-col lg:grid lg:grid-cols-2 gap-3 sm:gap-4">
                         {/* Left Side - full width on mobile */}
-                        <div className="relative rounded-lg overflow-hidden h-[50vh] lg:h-[calc(100vh-140px)]">
+                        <motion.div 
+                            variants={slideInVariants}
+                            className="relative rounded-lg overflow-hidden h-[50vh] lg:h-[calc(100vh-140px)]"
+                        >
                             <div className="relative w-full h-full">
                                 <Image
                                     src="/gold.png"
@@ -106,14 +124,20 @@ export default function CategorySection() {
                                     </motion.div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* Right Side - full width on mobile, with adjusted heights */}
-                        <div className="flex flex-col h-auto gap-3 sm:gap-4">
+                        <motion.div 
+                            variants={fadeInVariants}
+                            className="flex flex-col h-auto gap-3 sm:gap-4"
+                        >
                             {/* Top Section */}
                             <div className="flex flex-col sm:grid sm:grid-cols-3 gap-3 sm:gap-4">
                                 {/* Top Left Image (full width on mobile, 2/3 on tablet+) */}
-                                <div className="w-full sm:col-span-2 relative rounded-lg overflow-hidden shadow-lg h-[30vh] sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]">
+                                <motion.div 
+                                    variants={itemVariants}
+                                    className="w-full sm:col-span-2 relative rounded-lg overflow-hidden shadow-lg h-[30vh] sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]"
+                                >
                                     <Image
                                         src="/Rượu lá Sâm Ngọc Linh bình 500 ML_4.png"
                                         alt="Top right image"
@@ -121,10 +145,13 @@ export default function CategorySection() {
                                         style={{ objectFit: "cover" }}
                                         className="rounded-lg"
                                     />
-                                </div>
+                                </motion.div>
 
                                 {/* Top Right Card (full width on mobile, 1/3 on tablet+) */}
-                                <div className="w-full sm:col-span-1 bg-blue-700 p-3 sm:p-4 md:p-6 rounded-lg flex flex-col h-auto sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]">
+                                <motion.div 
+                                    variants={itemVariants}
+                                    className="w-full sm:col-span-1 bg-blue-700 p-3 sm:p-4 md:p-6 rounded-lg flex flex-col h-auto sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]"
+                                >
                                     {/* Title at the top */}
                                     <h3 className="text-base sm:text-lg font-bold mb-1 sm:mb-2 text-gray-200">Rượu Lá Sâm Ngọc Linh</h3>
 
@@ -139,13 +166,16 @@ export default function CategorySection() {
                                             Xem Thêm
                                         </Link>
                                     </div>
-                                </div>
+                                </motion.div>
                             </div>
 
                             {/* Bottom Section */}
                             <div className="flex flex-col-reverse sm:grid sm:grid-cols-3 gap-3 sm:gap-4">
                                 {/* Bottom Left Card (full width on mobile, 1/3 on tablet+) */}
-                                <div className="w-full sm:col-span-1 bg-blue-700 p-3 sm:p-4 md:p-6 rounded-lg flex flex-col h-auto sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]">
+                                <motion.div 
+                                    variants={itemVariants}
+                                    className="w-full sm:col-span-1 bg-blue-700 p-3 sm:p-4 md:p-6 rounded-lg flex flex-col h-auto sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]"
+                                >
                                     <h3 className="text-base sm:text-lg font-bold mb-1 sm:mb-2 text-gray-200">
                                         Sâm Yến Bảo Ly
                                     </h3>
@@ -161,10 +191,13 @@ export default function CategorySection() {
                                             Xem Thêm
                                         </Link>
                                     </div>
-                                </div>
+                                </motion.div>
 
                                 {/* Bottom Right Image (full width on mobile, 2/3 on tablet+) */}
-                                <div className="w-full sm:col-span-2 relative rounded-lg overflow-hidden shadow-lg h-[30vh] sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]">
+                                <motion.div 
+                                    variants={itemVariants}
+                                    className="w-full sm:col-span-2 relative rounded-lg overflow-hidden shadow-lg h-[30vh] sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]"
+                                >
                                     <Image
                                         src="/yen.png"
                                         alt="Bottom right image"
@@ -172,12 +205,12 @@ export default function CategorySection() {
                                         style={{ objectFit: "cover" }}
                                         className="rounded-lg"
                                     />
-                                </div>
+                                </motion.div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 }
