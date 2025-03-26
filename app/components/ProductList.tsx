@@ -2,8 +2,8 @@
 import { Product } from './api';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { useScrollAnimation } from './utils/useScrollAnimation';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 interface ProductListProps {
     products: Product[];
@@ -11,29 +11,31 @@ interface ProductListProps {
 }
 
 export default function ProductList({ products, isChebien }: ProductListProps) {
-    const [leaves, setLeaves] = useState<Array<{id: number, x: number, y: number, rotation: number, scale: number}>>([]);
-    const { ref, isInView, containerVariants, itemVariants } = useScrollAnimation({
-        threshold: 0.1
+    const [leaves, setLeaves] = useState<Array<{ id: number, x: number, y: number, rotation: number, scale: number }>>([]);
+    const controls = useAnimation();
+    const [ref, inView] = useInView({
+        triggerOnce: true, // Only trigger once
+        threshold: 0.1 // Trigger when 10% of the component is visible
     });
-    
+
     // Get min price for each product
     const getMinPrice = (product: Product) => {
         if (!product.volumePrices || product.volumePrices.length === 0) {
             return 0;
         }
-        
-        const prices = product.volumePrices.map(vp => 
+
+        const prices = product.volumePrices.map(vp =>
             vp.price.originalPrice
         );
-        
+
         return Math.min(...prices);
     };
-    
+
     // Sort products by price (non-zero first, then zero)
     const sortedProducts = [...products].sort((a, b) => {
         const aMinPrice = getMinPrice(a);
         const bMinPrice = getMinPrice(b);
-        
+
         if (aMinPrice === 0 && bMinPrice !== 0) return 1;
         if (aMinPrice !== 0 && bMinPrice === 0) return -1;
         return 0;
@@ -44,17 +46,17 @@ export default function ProductList({ products, isChebien }: ProductListProps) {
         // For products with volume prices
         if (product.volumePrices && product.volumePrices.length > 0) {
             const firstPrice = product.volumePrices[0].price.originalPrice;
-            
-            return firstPrice === 0 ? "Liên Hệ" : new Intl.NumberFormat('vi-VN', { 
-                style: 'currency', 
+
+            return firstPrice === 0 ? "Liên Hệ" : new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
                 currency: 'VND'
             }).format(firstPrice);
         }
-        
+
         // For products with single price
         if (product.price !== undefined) {
-            return product.price === 0 ? "Liên Hệ" : new Intl.NumberFormat('vi-VN', { 
-                style: 'currency', 
+            return product.price === 0 ? "Liên Hệ" : new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
                 currency: 'VND'
             }).format(product.price);
         }
@@ -63,82 +65,88 @@ export default function ProductList({ products, isChebien }: ProductListProps) {
         return "Liên Hệ";
     };
 
+    // Product animation variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                delayChildren: 0.2,
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { 
+            opacity: 0, 
+            y: 50 
+        },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { 
+                duration: 0.5,
+                ease: "easeOut"
+            }
+        }
+    };
+
     useEffect(() => {
-        // Tạo các lá cây ngẫu nhiên khi component mount
+        // Leaf generation effect (same as before)
         const generateLeaves = () => {
-            const numberOfLeaves = 30; // Số lượng lá cây
+            const numberOfLeaves = 30;
             const newLeaves = [];
-            
+
             for (let i = 0; i < numberOfLeaves; i++) {
                 newLeaves.push({
                     id: i,
-                    x: Math.random() * 100, // Vị trí ngẫu nhiên theo chiều ngang (%)
-                    y: Math.random() * 100, // Vị trí ngẫu nhiên theo chiều dọc (%)
-                    rotation: Math.random() * 360, // Góc xoay ngẫu nhiên
-                    scale: 0.5 + Math.random() * 0.5, // Kích thước ngẫu nhiên từ 0.5 đến 1
+                    x: Math.random() * 100,
+                    y: Math.random() * 100,
+                    rotation: Math.random() * 360,
+                    scale: 0.5 + Math.random() * 0.5,
                 });
             }
-            
+
             setLeaves(newLeaves);
         };
-        
+
         generateLeaves();
-        
-        // Tạo hiệu ứng animation cho lá cây
+
+        // Leaf animation interval
         const interval = setInterval(() => {
             setLeaves(prevLeaves => prevLeaves.map(leaf => ({
                 ...leaf,
-                rotation: leaf.rotation + (Math.random() * 2 - 1), // Xoay nhẹ
-                y: leaf.y + 0.05, // Rơi nhẹ xuống
-                x: leaf.x + (Math.random() * 0.4 - 0.2), // Di chuyển nhẹ theo chiều ngang
+                rotation: leaf.rotation + (Math.random() * 2 - 1),
+                y: leaf.y + 0.05,
+                x: leaf.x + (Math.random() * 0.4 - 0.2),
             })));
         }, 100);
-        
+
+        // Trigger animation when component comes into view
+        if (inView) {
+            controls.start("visible");
+        }
+
         return () => clearInterval(interval);
-    }, []);
+    }, [inView, controls]);
 
     return (
-        <motion.div 
+        <motion.div
             ref={ref}
+            animate={controls}
             initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
             variants={containerVariants}
             className="max-w-8xl mx-auto mt-4 relative overflow-hidden"
         >
-            {/* Lá cây trang trí */}
-            <div className="absolute inset-0 w-full h-full pointer-events-none z-10">
-                {leaves.map((leaf) => (
-                    <div
-                        key={leaf.id}
-                        className="absolute w-16 h-16 md:w-24 md:h-24 transition-all duration-1000 ease-in-out"
-                        style={{
-                            left: `${leaf.x}%`,
-                            top: `${leaf.y}%`,
-                            transform: `rotate(${leaf.rotation}deg) scale(${leaf.scale})`,
-                            opacity: 0.5,
-                            zIndex: Math.floor(leaf.y) % 2 === 0 ? 10 : 0, // Một số lá phía trên, một số lá phía dưới
-                            overflow: 'visible',
-                        }}
-                    >
-                        <img 
-                            src={`/leaf-${(leaf.id % 3) + 1}.png`} 
-                            alt="Lá cây" 
-                            className="w-full h-full object-contain"
-                        />
-                    </div>
-                ))}
-            </div>
 
-            {/* Background hiệu ứng rừng cây */}
-            <div className="absolute inset-0 bg-gradient-to-b from-green-50/30 to-green-100/20 pointer-events-none"></div>
 
             {/* Cards container */}
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-0 md:gap-0 relative z-20">
-                {sortedProducts.map((product, index) => (
+                {sortedProducts.map((product) => (
                     <motion.div
                         key={product._id}
                         variants={itemVariants}
-                        custom={index}
                         className="flex-shrink-0 transition-opacity duration-300 md:p-2 p-1 relative"
                     >
                         <Link href={`/san-pham/chi-tiet/${product.slug}`}>
@@ -176,10 +184,13 @@ export default function ProductList({ products, isChebien }: ProductListProps) {
                             </div>
                             <div className="bg-white rounded-xl overflow-hidden transition-opacity duration-300 relative group ">
                                 <div className="absolute inset-0 bg-gradient-to-t from-green-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                
-                                <img
+
+                                <motion.img
                                     src={product.images[0]}
                                     alt={product.name}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.5, delay: 0.2 }}
                                     className="w-full h-[12rem] sm:h-[16rem] md:h-[22rem] lg:h-[26rem] xl:h-[30rem] object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
 
