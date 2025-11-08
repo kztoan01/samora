@@ -67,7 +67,7 @@ export default function CategoryNav({ categories, currentCategory }: CategoryNav
             <Link href={`/san-pham/${category.slug}`} key={category.id}>
               <div 
                 className={`
-                  ${currentCategory === category.slug ? 'bg-blue-100' : 'bg-zinc-50 hover:bg-blue-50'} 
+                  ${currentCategory === category.slug ? 'bg-green-100' : 'bg-zinc-50 hover:bg-green-50'} 
                   px-4 py-3 rounded-lg transition-all duration-200 group flex items-center justify-between
                 `}
               >

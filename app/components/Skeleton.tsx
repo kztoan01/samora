@@ -21,7 +21,7 @@ export function CategorySkeleton() {
             <div className="relative rounded-lg overflow-hidden h-[50vh] lg:h-[calc(100vh-140px)]">
               <Skeleton className="h-full w-full" />
               <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 z-20 max-w-md">
-                <div className="bg-blue-700/30 p-3 sm:p-6 rounded-2xl">
+                <div className="bg-green-700/30 p-3 sm:p-6 rounded-2xl">
                   <Skeleton className="h-6 w-32 mb-2" />
                   <Skeleton className="h-4 w-full mb-1" />
                   <Skeleton className="h-4 w-full mb-1" />
@@ -41,7 +41,7 @@ export function CategorySkeleton() {
                 </div>
 
                 {/* Top Right Card */}
-                <div className="w-full sm:col-span-1 bg-blue-700/30 p-3 sm:p-4 md:p-6 rounded-lg flex flex-col h-auto sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]">
+                <div className="w-full sm:col-span-1 bg-green-700/30 p-3 sm:p-4 md:p-6 rounded-lg flex flex-col h-auto sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]">
                   <Skeleton className="h-6 w-32 mb-2" />
                   <Skeleton className="h-4 w-full mb-1" />
                   <Skeleton className="h-4 w-full mb-1" />
@@ -56,7 +56,7 @@ export function CategorySkeleton() {
               {/* Bottom Section */}
               <div className="flex flex-col-reverse sm:grid sm:grid-cols-3 gap-3 sm:gap-4">
                 {/* Bottom Left Card */}
-                <div className="w-full sm:col-span-1 bg-blue-700/30 p-3 sm:p-4 md:p-6 rounded-lg flex flex-col h-auto sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]">
+                <div className="w-full sm:col-span-1 bg-green-700/30 p-3 sm:p-4 md:p-6 rounded-lg flex flex-col h-auto sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]">
                   <Skeleton className="h-6 w-32 mb-2" />
                   <Skeleton className="h-4 w-full mb-1" />
                   <Skeleton className="h-4 w-full mb-1" />
@@ -240,7 +240,7 @@ export function ShopSkeleton() {
     <div className="h-full w-full max-w-8xl mx-auto p-1 md:p-4 mt-1 bg-white">
      
       
-      <div className="bg-blue-100 animate-pulse rounded-xl h-[16rem] mb-4" />
+      <div className="bg-green-100 animate-pulse rounded-xl h-[16rem] mb-4" />
       
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
         {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
@@ -336,13 +336,13 @@ export function ProductDetailSkeleton({ showVolume = true }: { showVolume?: bool
                 </div>
               </div>
               <div className="w-full lg:w-auto lg:ml-8">
-                <Skeleton className="h-12 w-full lg:w-48 rounded-md bg-blue-300" />
+                <Skeleton className="h-12 w-full lg:w-48 rounded-md bg-green-300" />
               </div>
             </div>
           </div>
           
-          <div className="bg-blue-600 p-3 mt-4 rounded-xl overflow-hidden relative">
-            <div className="h-6 bg-blue-400 animate-pulse rounded-lg w-full opacity-50" />
+          <div className="bg-green-600 p-3 mt-4 rounded-xl overflow-hidden relative">
+            <div className="h-6 bg-green-400 animate-pulse rounded-lg w-full opacity-50" />
           </div>
           
           <div className="mt-4 space-y-2">

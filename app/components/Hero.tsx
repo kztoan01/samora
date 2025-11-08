@@ -12,26 +12,26 @@ import HeaderSection from './Header';
 // Sample image data - replace with your actual image URLs
 const carouselImages = [
   {
-    src: "/gold3.png",
+    src: "/Thiết kế chưa có tên (2).png",
     alt: "Rượu Sâm Ngọc Linh",
     title: "Rượu Sâm Ngọc Linh",
     subtitle: "Chắt lọc từ củ sâm Ngọc Linh lâu năm, hương vị đắng nhẹ nhưng hậu ngọt tinh tế. Giúp tăng cường sức khỏe, nâng cao sức đề kháng và hỗ trợ tuần hoàn máu.",
     link: "/san-pham/ruou-sam-ngoc-linh"
   },
   {
-    src: "/sam.png",
+    src: "/Thiết kế chưa có tên (3).png",
     alt: "Rượu Hoa Sâm Ngọc Linh",
     title: "Rượu Hoa Sâm Ngọc Linh",
     subtitle: "Được ủ từ hoa sâm Ngọc Linh quý hiếm, mang đến hương thơm dịu nhẹ, vị ngọt thanh đặc trưng. Hỗ trợ tăng cường sinh lực, cải thiện giấc ngủ và giảm căng thẳng.",
     link: "/san-pham/ruou-hoa-sam-ngoc-linh"
   },
-  {
-    src: "/SAM20-scaled.png",
-    alt: "Rượu Lá Sâm Ngọc Linh",
-    title: "Rượu Lá Sâm Ngọc Linh",
-    subtitle: "Chiết xuất từ những lá sâm tươi nguyên chất, giàu dưỡng chất giúp thanh lọc cơ thể, tăng cường hệ miễn dịch và mang lại nguồn sinh khí mới.",
-    link: "/san-pham/ruou-la-sam-ngoc-linh"
-  }
+  // {
+  //   src: "/SAM20-scaled.png",
+  //   alt: "Rượu Lá Sâm Ngọc Linh",
+  //   title: "Rượu Lá Sâm Ngọc Linh",
+  //   subtitle: "Chiết xuất từ những lá sâm tươi nguyên chất, giàu dưỡng chất giúp thanh lọc cơ thể, tăng cường hệ miễn dịch và mang lại nguồn sinh khí mới.",
+  //   link: "/san-pham/ruou-la-sam-ngoc-linh"
+  // }
 ];
 
 export default function HeroSection() {
@@ -143,19 +143,19 @@ export default function HeroSection() {
                     src={image.src}
                     alt={image.alt}
                     fill
-                    className={`object-cover ${image.src == "/sam.png" ? "object-[50%_25%]" : "object-[50%_55%]"}`}
+                    className={`object-cover ${image.src == "/Thiết kế chưa có tên (3).png" ? "object-[50%_25%]" : "object-[50%_55%]"}`}
                     priority={index === 0}
                   />
                 </div>
                 
                 {/* Content overlay - positioned below on mobile, overlaid on desktop */}
                 <div className="w-full md:absolute md:bottom-8 md:left-8 md:z-20 md:w-[80%] md:max-w-md p-4">
-                  <div className="backdrop-blur-md bg-white/90 border-l-4 border-blue-800 p-4 sm:p-5 rounded-r-xl text-black shadow-lg">
+                  <div className="backdrop-blur-md bg-white/90 border-l-4 border-green-800 p-4 sm:p-5 rounded-r-xl text-black shadow-lg">
                     {/* Product featured heading */}
-                    <div className="bg-blue-800 text-white inline-block px-2 py-1 text-xs mb-3">SẢN PHẨM NỔI BẬT</div>
+                    <div className="bg-green-800 text-white inline-block px-2 py-1 text-xs mb-3">SẢN PHẨM NỔI BẬT</div>
 
                     {/* Product title */}
-                    <h2 className="text-lg sm:text-xl font-bold mb-2 text-blue-800">{image.title}</h2>
+                    <h2 className="text-lg sm:text-xl font-bold mb-2 text-green-800">{image.title}</h2>
 
                     {/* Product description */}
                     <p className="text-gray-700 mb-3 text-sm leading-tight border-l-2 border-amber-500 pl-2 italic">
@@ -166,12 +166,12 @@ export default function HeroSection() {
                     <div className="flex items-center mb-3 bg-amber-50 p-2 rounded-lg">
                       <img
                         src="/logo.png"
-                        alt="Logo Sâm Ngọc Linh Bảo Ly"
-                        className="h-10 mr-2"
+                        alt="Logo Samora"
+                        className="rounded-full h-10 mr-2"
                       />
                       <div>
                         <p className="text-xs text-gray-500">Phân phối chính thức bởi</p>
-                        <p className="font-bold text-blue-800 text-sm">CÔNG TY TNHH SẢM NGỌC LINH BẢO LY</p>
+                        <p className="font-bold text-green-800 text-sm">CÔNG TY TNHH SẢM NGỌC LINH Samora</p>
                       </div>
                     </div>
 
@@ -179,7 +179,7 @@ export default function HeroSection() {
                     <div className="flex items-center gap-3">
                       <Link
                         href={image.link}
-                        className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded-lg text-sm font-medium transition duration-300 text-center flex-1"
+                        className="bg-green-700 hover:bg-green-800 text-white py-2 px-4 rounded-lg text-sm font-medium transition duration-300 text-center flex-1"
                       >
                         Xem Chi Tiết
                       </Link>
@@ -194,9 +194,9 @@ export default function HeroSection() {
 
                     {/* Certification tags */}
                     <div className="mt-3 flex flex-wrap gap-1">
-                      <span className="bg-gray-100 text-blue-800 text-xs px-2 py-1 rounded">✓ Chính Hãng</span>
-                      <span className="bg-gray-100 text-blue-800 text-xs px-2 py-1 rounded">✓ Kiểm Định Chất Lượng</span>
-                      <span className="bg-gray-100 text-blue-800 text-xs px-2 py-1 rounded">✓ OCOP 4 Sao</span>
+                      <span className="bg-gray-100 text-green-800 text-xs px-2 py-1 rounded">✓ Chính Hãng</span>
+                      <span className="bg-gray-100 text-green-800 text-xs px-2 py-1 rounded">✓ Kiểm Định Chất Lượng</span>
+                      <span className="bg-gray-100 text-green-800 text-xs px-2 py-1 rounded">✓ OCOP 4 Sao</span>
                     </div>
                   </div>
                 </div>
@@ -207,14 +207,14 @@ export default function HeroSection() {
           {/* Navigation buttons */}
           <button
             onClick={prevSlide}
-            className="hidden sm:block absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 backdrop-blur-sm bg-blue-800/70 text-white p-1 sm:p-2 rounded-full hover:bg-blue-700 transition-all"
+            className="hidden sm:block absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 backdrop-blur-sm bg-green-800/70 text-white p-1 sm:p-2 rounded-full hover:bg-green-700 transition-all"
             aria-label="Previous slide"
           >
             <ChevronLeft size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
           <button
             onClick={nextSlide}
-            className="hidden sm:block absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 backdrop-blur-sm bg-blue-800/70 text-white p-1 sm:p-2 rounded-full hover:bg-blue-700 transition-all"
+            className="hidden sm:block absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 backdrop-blur-sm bg-green-800/70 text-white p-1 sm:p-2 rounded-full hover:bg-green-700 transition-all"
             aria-label="Next slide"
           >
             <ChevronRight size={20} className="w-4 h-4 sm:w-5 sm:h-5" />

@@ -47,7 +47,7 @@ export async function GET(
   try {
     const { id } = await params;
     const client = await clientPromise;
-    const db = client.db("SamNgocLinhDB");
+    const db = client.db("SamoraDB");
 
     let productId;
     try {
@@ -76,7 +76,7 @@ export async function DELETE(
     try {
         const { id } = await params;
     const client = await clientPromise;
-    const db = client.db("SamNgocLinhDB");
+    const db = client.db("SamoraDB");
 
     // Validate the ID is a valid ObjectId
     let roomId;
@@ -110,7 +110,7 @@ export async function PUT(
   try {
     const { id } = await params;
     const client = await clientPromise;
-    const db = client.db("SamNgocLinhDB");
+    const db = client.db("SamoraDB");
 
     let productId;
     try {

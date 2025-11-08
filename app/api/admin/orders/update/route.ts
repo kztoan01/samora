@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     
     // Connect to MongoDB
     const client = await clientPromise;
-    const db = client.db("SamNgocLinhDB");
+    const db = client.db("SamoraDB");
     
     // Create update object
     const updateObject: any = {

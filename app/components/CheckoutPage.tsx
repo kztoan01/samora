@@ -329,14 +329,14 @@ const CheckoutPage = () => {
           <p className="text-gray-600 mb-6">Cảm ơn bạn đã mua hàng tại cửa hàng chúng tôi.</p>
           <div className="bg-gray-50 p-4 rounded-md mb-6">
             <p className="text-sm text-gray-600 mb-1">Mã đơn hàng của bạn:</p>
-            <p className="text-lg font-semibold text-blue-600">{orderNumber}</p>
+            <p className="text-lg font-semibold text-green-600">{orderNumber}</p>
           </div>
           <p className="text-sm text-gray-500 mb-6">
             Chúng tôi sẽ sớm liên hệ với bạn để xác nhận đơn hàng.
           </p>
           <button
             onClick={() => router.push('/')}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-medium transition duration-300"
+            className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-md font-medium transition duration-300"
           >
             Tiếp tục mua sắm
           </button>
@@ -587,7 +587,7 @@ const CheckoutPage = () => {
             <button
               type="submit"
               disabled={isProcessing}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-medium mt-6 transition duration-300 disabled:bg-blue-400"
+              className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-md font-medium mt-6 transition duration-300 disabled:bg-green-400"
             >
               {isProcessing ? "Đang xử lý..." : "Đặt hàng ngay"}
             </button>
@@ -648,8 +648,8 @@ const CheckoutPage = () => {
             </div>
           </div>
 
-          <div className="mt-6 bg-blue-50 p-3 rounded-md text-sm">
-            <h3 className="font-medium text-blue-800 mb-1">Chính sách giao hàng</h3>
+          <div className="mt-6 bg-green-50 p-3 rounded-md text-sm">
+            <h3 className="font-medium text-green-800 mb-1">Chính sách giao hàng</h3>
             <p className="text-gray-700">Đơn hàng sẽ được giao trong vòng 2-3 ngày làm việc. Thời gian có thể thay đổi tùy thuộc vào khu vực.</p>
           </div>
         </div>

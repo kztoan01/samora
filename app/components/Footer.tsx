@@ -36,11 +36,11 @@ export default function FooterSection() {
                   src="/logo.png"
                   alt="Company Logo"
                   fill
-                  className="rounded-full bg-blue-500 object-contain"
+                  className="rounded-full object-contain"
                 />
               </div>
               {/* Company Name */}
-              <h2 className="text-xl md:text-2xl font-bold">Sâm Ngọc Linh Bảo Ly</h2>
+              <h2 className="text-xl md:text-2xl font-bold">Samora</h2>
             </div>
             
             <p className="text-gray-600 mb-6">
@@ -60,7 +60,7 @@ export default function FooterSection() {
                 variants={fadeInVariants}
                 className="flex items-start"
               >
-                <Home className="h-5 w-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
+                <Home className="h-5 w-5 text-green-600 mt-1 mr-3 flex-shrink-0" />
                 <div>
                   <p className="font-semibold text-gray-800">Trụ sở chính:</p>
                   <p className="text-gray-600">15 Chế Lan Viên, Phường Tân Thạnh, Thành phố Tam Kỳ, Tỉnh Quảng Nam</p>
@@ -72,7 +72,7 @@ export default function FooterSection() {
                 variants={fadeInVariants}
                 className="flex items-start"
               >
-                <Building className="h-5 w-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
+                <Building className="h-5 w-5 text-green-600 mt-1 mr-3 flex-shrink-0" />
                 <div>
                   <p className="font-semibold text-gray-800">Văn phòng đại diện:</p>
                   <p className="text-gray-600">32/5/10 Đường số 12, Phường 11, Quận Gò Vấp, TP.Hồ Chí Minh</p>
@@ -84,8 +84,8 @@ export default function FooterSection() {
                 variants={fadeInVariants}
                 className="flex items-center"
               >
-                <Mail className="h-5 w-5 text-blue-600 mr-3 flex-shrink-0" />
-                <a href="mailto:maiphuccl@gmail.com" className="text-gray-600 hover:text-blue-600 transition-colors">
+                <Mail className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                <a href="mailto:maiphuccl@gmail.com" className="text-gray-600 hover:text-green-600 transition-colors">
                   maiphuccl@gmail.com
                 </a>
               </motion.div>
@@ -95,8 +95,8 @@ export default function FooterSection() {
                 variants={fadeInVariants}
                 className="flex items-center"
               >
-                <Phone className="h-5 w-5 text-blue-600 mr-3 flex-shrink-0" />
-                <a href="tel:0903924405" className="text-gray-600 hover:text-blue-600 transition-colors">
+                <Phone className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                <a href="tel:0903924405" className="text-gray-600 hover:text-green-600 transition-colors">
                   Hotline: 0903 924 405
                 </a>
               </motion.div>
@@ -111,25 +111,25 @@ export default function FooterSection() {
                 <h3 className="text-lg font-bold mb-4 pb-2 border-b border-gray-200">Liên Kết Nhanh</h3>
                 <ul className="space-y-2">
                   <motion.li variants={fadeInVariants}>
-                    <Link href="/gioi-thieu" className="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
+                    <Link href="/gioi-thieu" className="flex items-center text-gray-600 hover:text-green-600 transition-colors">
                       <ChevronRight className="h-4 w-4 mr-1" />
                       <span>Giới Thiệu</span>
                     </Link>
                   </motion.li>
                   <motion.li variants={fadeInVariants}>
-                    <Link href="/san-pham" className="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
+                    <Link href="/san-pham" className="flex items-center text-gray-600 hover:text-green-600 transition-colors">
                       <ChevronRight className="h-4 w-4 mr-1" />
                       <span>Sản Phẩm</span>
                     </Link>
                   </motion.li>
                   <motion.li variants={fadeInVariants}>
-                    <Link href="#chung-chi" className="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
+                    <Link href="#chung-chi" className="flex items-center text-gray-600 hover:text-green-600 transition-colors">
                       <ChevronRight className="h-4 w-4 mr-1" />
                       <span>Chứng Chỉ</span>
                     </Link>
                   </motion.li>
                   <motion.li variants={fadeInVariants}>
-                    <Link href="/lien-he" className="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
+                    <Link href="/lien-he" className="flex items-center text-gray-600 hover:text-green-600 transition-colors">
                       <ChevronRight className="h-4 w-4 mr-1" />
                       <span>Liên Hệ</span>
                     </Link>
@@ -143,14 +143,14 @@ export default function FooterSection() {
         {/* Bottom Banner */}
         <motion.div 
           variants={itemVariants}
-          className="bg-blue-600 text-white p-4 rounded-lg flex flex-col md:flex-row justify-between items-center mb-8"
+          className="bg-green-600 text-white p-4 rounded-lg flex flex-col md:flex-row justify-between items-center mb-8"
         >
           <p className="text-center md:text-left mb-4 md:mb-0">
             Liên hệ với chúng tôi để được tư vấn và báo giá tốt nhất!
           </p>
           <a 
             href="tel:0903924405" 
-            className="bg-white text-blue-600 hover:bg-blue-50 transition-all font-bold py-2 px-6 rounded-md inline-flex items-center"
+            className="bg-white text-green-600 hover:bg-green-50 transition-all font-bold py-2 px-6 rounded-md inline-flex items-center"
           >
             <Phone className="h-5 w-5 mr-2" />
             0903 924 405
@@ -162,7 +162,7 @@ export default function FooterSection() {
           variants={fadeInVariants}
           className="border-t border-gray-200 pt-8 text-center text-gray-600 text-sm"
         >
-          <p>© {new Date().getFullYear()} Sâm Ngọc Linh Bảo Ly. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Samora. All rights reserved.</p>
         </motion.div>
       </div>
     </motion.footer>

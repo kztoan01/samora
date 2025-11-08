@@ -47,7 +47,7 @@ export default function ShopSection() {
             <Nav />
 
             {/* Banner */}
-            <div className="bg-blue-100 flex flex-col items-center sm:items-start justify-center h-auto sm:h-[16rem] mb-4 text-black px-6 sm:px-16 py-8 sm:py-16 rounded-xl overflow-hidden relative text-center sm:text-left">
+            <div className="bg-green-100 flex flex-col items-center sm:items-start justify-center h-auto sm:h-[16rem] mb-4 text-black px-6 sm:px-16 py-8 sm:py-16 rounded-xl overflow-hidden relative text-center sm:text-left">
                 <h1 className="text-xl sm:text-3xl font-semibold mb-4 mt-4 sm:mt-9">
                     Khám Phá Bộ Sưu Tập
                 </h1>

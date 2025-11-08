@@ -216,7 +216,7 @@ const OrdersPage = () => {
       case "pending":
         return "bg-yellow-100 text-yellow-800";
       case "processing":
-        return "bg-blue-100 text-blue-800";
+        return "bg-green-100 text-green-800";
       case "shipped":
         return "bg-purple-100 text-purple-800";
       case "delivered":
@@ -269,13 +269,13 @@ const OrdersPage = () => {
               <input
                 type="text"
                 placeholder="Tìm theo mã đơn, tên khách hàng, SĐT..."
-                className="flex-1 border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
               <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+                className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
               >
                 Tìm kiếm
               </button>
@@ -289,7 +289,7 @@ const OrdersPage = () => {
                 setStatusFilter(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
             >
               <option value="all">Tất cả trạng thái</option>
               <option value="pending">Chờ xử lý</option>
@@ -343,7 +343,7 @@ const OrdersPage = () => {
                 <tr>
                   <td colSpan={7} className="px-6 py-4 text-center">
                     <div className="flex justify-center items-center">
-                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div>
+                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-green-500"></div>
                       <span className="ml-2">Đang tải...</span>
                     </div>
                   </td>
@@ -422,7 +422,7 @@ const OrdersPage = () => {
                           e.stopPropagation();
                           openOrderModal(order);
                         }}
-                        className="text-blue-600 hover:text-blue-900"
+                        className="text-green-600 hover:text-green-900"
                       >
                         Chi tiết
                       </button>
@@ -452,7 +452,7 @@ const OrdersPage = () => {
               onClick={() => setCurrentPage(page)}
               className={`px-4 py-2 border rounded-md ${
                 currentPage === page
-                  ? "bg-blue-500 text-white"
+                  ? "bg-green-500 text-white"
                   : "hover:bg-gray-50"
               }`}
             >
@@ -530,7 +530,7 @@ const OrdersPage = () => {
                     <select
                       value={orderStatusUpdate}
                       onChange={(e) => setOrderStatusUpdate(e.target.value)}
-                      className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                     >
                       <option value="pending">Chờ xử lý</option>
                       <option value="processing">Đang xử lý</option>
@@ -545,7 +545,7 @@ const OrdersPage = () => {
                     <select
                       value={paymentStatusUpdate}
                       onChange={(e) => setPaymentStatusUpdate(e.target.value)}
-                      className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                     >
                       <option value="pending">Chưa thanh toán</option>
                       <option value="paid">Đã thanh toán</option>
@@ -688,7 +688,7 @@ const OrdersPage = () => {
                 value={adminNotes}
                 onChange={(e) => setAdminNotes(e.target.value)}
                 placeholder="Thêm ghi chú về đơn hàng này..."
-                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 h-32"
+                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 h-32"
               ></textarea>
             </div>
             
@@ -702,7 +702,7 @@ const OrdersPage = () => {
               </button>
               <button
                 onClick={handleUpdateOrder}
-                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
               >
                 Cập nhật đơn hàng
               </button>

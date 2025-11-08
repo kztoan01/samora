@@ -112,7 +112,7 @@ export default function AboutSection() {
                                         variants={fadeInVariants}
                                         className="text-2xl font-bold text-gray-800 mb-4"
                                     >
-                                        Rượu Sâm Ngọc Linh Bảo Ly
+                                        Rượu Samora
                                     </motion.h2>
                                 </div>
 
@@ -145,9 +145,9 @@ export default function AboutSection() {
                                 whileHover={{ scale: 1.02 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <div className="h-[30rem] md:h-[40rem] rounded-lg overflow-hidden">
+                                <div className="h-[30rem] md:h-[50rem] rounded-lg overflow-hidden">
                                     <Image
-                                        src="/SAM20-scaled.png"
+                                        src="/Thiết kế chưa có tên (2).png"
                                         alt="Bottom right image"
                                         layout="fill"
                                         objectFit="cover"

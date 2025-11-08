@@ -40,14 +40,7 @@ export interface Category {
 
 // Danh sách thể loại (nếu không có API)
 export const categories: Category[] = [
-  { id: "1", name: "Các sản phẩm chế biến", slug: "che-bien" },
-  { id: "2", name: "Cây giống & Hạt Sâm Ngọc Linh", slug: "cay-giong-hat" },
-  { id: "3", name: "Rượu Hoa Sâm Ngọc Linh", slug: "ruou-hoa-sam-ngoc-linh" },
-  { id: "4", name: "Rượu Hồng Đào Sâm Ngọc Linh", slug: "ruou-hong-dao-sam-ngoc-linh" },
-  { id: "5", name: "Rượu Lá Sâm Ngọc Linh", slug: "ruou-la-sam-ngoc-linh" },
-  { id: "6", name: "Rượu Sâm Ngọc Linh", slug: "ruou-sam-ngoc-linh" },
-  { id: "7", name: "Rượu Sâm Ngọc Linh Cây Và Củ", slug: "ruou-sam-ngoc-linh-cay-cu" },
-  { id: "8", name: "Sâm Ngọc Linh củ tươi", slug: "sam-ngoc-linh-cu-tuoi" },
+  { id: "1", name: "Rượu Sâm Ngọc Linh", slug: "ruou-sam-ngoc-linh" },
 ];
 
 // API URL

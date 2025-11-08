@@ -47,7 +47,7 @@ export async function GET(
   try {
     const { slug } = await params;
     const client = await clientPromise;
-    const db = client.db("SamNgocLinhDB");
+    const db = client.db("SamoraDB");
     const product = await db.collection<Product>("Products").findOne({ slug });
 
     if (!product) {

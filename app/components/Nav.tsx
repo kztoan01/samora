@@ -18,14 +18,15 @@ export default function Nav() {
     { title: 'Cửa Hàng', href: '/san-pham' },
     {
       title: 'Sản Phẩm', href: '/san-pham', dropdown: [
-        { title: 'Rượu Sâm Ngọc Linh', href: '/san-pham/ruou-sam-ngoc-linh', image: '/gold.png' },
-        { title: 'Rượu Lá Sâm Ngọc Linh', href: '/san-pham/ruou-la-sam-ngoc-linh', image: '/la3l.png' },
-        { title: 'Rượu Hoa Sâm Ngọc Linh', href: '/san-pham/ruou-hoa-sam-ngoc-linh', image: '/hoa1l.png' },
-        { title: 'Rượu Sâm Ngọc Linh Cây Và Củ', href: '/san-pham/ruou-sam-ngoc-linh-cay-cu', image: '/caycu.png' },
-        { title: 'Rượu Hồng Đào Sâm Ngọc Linh', href: '/san-pham/ruou-hong-dao-sam-ngoc-linh', image: '/hongdao.png' },
-        { title: 'Các Sản Phẩm Chế Biến', href: '/san-pham/che-bien', image: '/matong.png' },
-        { title: 'Sâm Ngọc Linh Củ Tươi', href: '/san-pham/sam-ngoc-linh-cu-tuoi', image: '/cutuoi.jpg' },
-        { title: 'Cây Giống Và Hạt Sâm Ngọc Linh', href: '/san-pham/cay-giong-hat', image: '/hatsam.jpg' },
+        { title: 'Rượu Sâm Ngọc Linh 700ml', href: '/san-pham/ruou-sam-ngoc-linh', image: '/Thiết kế chưa có tên (2).png' },
+        { title: 'Rượu Sâm Ngọc Linh 500ml', href: '/san-pham/ruou-sam-ngoc-linh', image: '/Thiết kế chưa có tên (3).png' },
+        // { title: 'Rượu Lá Sâm Ngọc Linh', href: '/san-pham/ruou-la-sam-ngoc-linh', image: '/la3l.png' },
+        // { title: 'Rượu Hoa Sâm Ngọc Linh', href: '/san-pham/ruou-hoa-sam-ngoc-linh', image: '/hoa1l.png' },
+        // { title: 'Rượu Sâm Ngọc Linh Cây Và Củ', href: '/san-pham/ruou-sam-ngoc-linh-cay-cu', image: '/caycu.png' },
+        // { title: 'Rượu Hồng Đào Sâm Ngọc Linh', href: '/san-pham/ruou-hong-dao-sam-ngoc-linh', image: '/hongdao.png' },
+        // { title: 'Các Sản Phẩm Chế Biến', href: '/san-pham/che-bien', image: '/matong.png' },
+        // { title: 'Sâm Ngọc Linh Củ Tươi', href: '/san-pham/sam-ngoc-linh-cu-tuoi', image: '/cutuoi.jpg' },
+        // { title: 'Cây Giống Và Hạt Sâm Ngọc Linh', href: '/san-pham/cay-giong-hat', image: '/hatsam.jpg' },
       ]
     },
     { title: 'Sâm Ngọc Linh', href: '/ve-sam-ngoc-linh' },
@@ -87,12 +88,12 @@ export default function Nav() {
             <div className="flex items-center ml-2">
               <Link href="/" className="items-center space-x-2 md:flex hidden">
                 <span className="text-black text-base font-semibold">
-                  Bảo Ly
+                  Samora
                 </span>
               </Link>
               <Link href="/" className="items-center space-x-2 md:hidden">
                 <span className="text-base font-bold text-black">
-                  Bảo Ly
+                  Samora
                 </span>
               </Link>
              
@@ -158,7 +159,7 @@ export default function Nav() {
                             >
                               <Link
                                 href={subItem.href}
-                                className="flex items-center text-sm p-2 text-black rounded-xl font-semibold hover:bg-blue-100"
+                                className="flex items-center text-sm p-2 text-black rounded-xl font-semibold hover:bg-green-100"
                               >
                                 <Image
                                   src={subItem.image}
@@ -281,7 +282,7 @@ export default function Nav() {
             >
               {/* Mobile Menu Header */}
               <div className="flex justify-between items-center p-4 border-b">
-                <span className="text-xl font-bold">Bảo Ly</span>
+                <span className="text-xl font-bold">Samora</span>
                 <button onClick={() => setIsMobileMenuOpen(false)}>
                   <X className="h-6 w-6" />
                 </button>

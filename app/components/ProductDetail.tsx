@@ -170,6 +170,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                                     src={selectedImage}
                                     alt={product.name}
                                     className="object-cover h-full w-full rounded-xl"
+                                    style={{ objectPosition: 'right center' }}
                                 />
                             </div>
                         ) : (
@@ -185,7 +186,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                                     <button
                                         key={index}
                                         onClick={() => setSelectedImage(img)}
-                                        className={`h-16 w-16 border-2 rounded-md overflow-hidden transition-all ${selectedImage === img ? 'border-blue-600 shadow-md' : 'border-gray-200'
+                                        className={`h-16 w-16 border-2 rounded-md overflow-hidden transition-all ${selectedImage === img ? 'border-green-600 shadow-md' : 'border-gray-200'
                                             }`}
                                     >
                                         <div className="relative h-full w-full">
@@ -222,7 +223,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                         <h1 className="text-2xl md:text-4xl font-normal">{product.category} {product.name}</h1>
 
                         <div className="mt-4 md:mt-6 flex flex-wrap items-center">
-                            <span className="text-xl md:text-3xl font-medium text-blue-600">
+                            <span className="text-xl md:text-3xl font-medium text-green-600">
                                 {getDisplayPrice()}
                             </span>
 
@@ -250,7 +251,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                                                 onClick={() => setSelectedVolumePrice(vp)}
                                                 className={`px-4 py-2 border rounded-md ${
                                                     selectedVolumePrice === vp 
-                                                    ? 'border-blue-500 bg-blue-50 text-blue-700' 
+                                                    ? 'border-green-500 bg-green-50 text-green-700' 
                                                     : 'border-gray-300 hover:border-gray-400'
                                                 }`}
                                             >
@@ -296,7 +297,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                                         handleAddToCart()
                                         setIsCartOpen(true)
                                     }}
-                                        className="w-full lg:w-auto px-6 lg:ml-8 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-500 flex-grow lg:flex-grow-0">
+                                        className="w-full lg:w-auto px-6 lg:ml-8 py-3 bg-green-600 text-white rounded-md hover:bg-green-500 flex-grow lg:flex-grow-0">
                                         Thêm vào giỏ hàng
                                     </button>
                                 </div>
@@ -335,7 +336,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                                             handleAddToCart()
                                             setIsCartOpen(true)
                                         }}
-                                        className="w-full lg:w-auto px-6 lg:ml-8 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-500 flex-grow lg:flex-grow-0"
+                                        className="w-full lg:w-auto px-6 lg:ml-8 py-3 bg-green-600 text-white rounded-md hover:bg-green-500 flex-grow lg:flex-grow-0"
                                     >
                                         Thêm vào giỏ hàng
                                     </button>
@@ -348,7 +349,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     </div>
                 
                     <motion.div
-                        className="bg-blue-600 text-white p-3 mt-4 rounded-xl overflow-hidden relative"
+                        className="bg-green-600 text-white p-3 mt-4 rounded-xl overflow-hidden relative"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
@@ -356,7 +357,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                         {/* Container cố định với gradient */}
                         <div className="absolute inset-0 z-10 pointer-events-none"
                             style={{
-                                background: "linear-gradient(90deg, rgba(37, 99, 235, 1) 0%, rgba(37, 99, 235, 0) 15%, rgba(37, 99, 235, 0) 85%, rgba(37, 99, 235, 1) 100%)"
+                                background: "linear-gradient(90deg, rgba(0, 128, 0, 1) 0%, rgba(0, 128, 0, 0) 15%, rgba(0, 128, 0, 0) 85%, rgba(0, 128, 0, 1) 100%)"
                             }}
                         />
 

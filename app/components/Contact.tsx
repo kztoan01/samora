@@ -98,7 +98,7 @@ const ContactPage: React.FC = () => {
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
-                                className="flex-1 w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 p-3 border"
+                                className="flex-1 w-full rounded-md border-gray-300 focus:border-green-500 focus:ring-green-500 p-3 border"
                             />
                         </motion.div>
 
@@ -111,7 +111,7 @@ const ContactPage: React.FC = () => {
                             onChange={handleChange}
                             rows={3}
                             required
-                            className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 p-3 border"
+                            className="block w-full rounded-md border-gray-300 focus:border-green-500 focus:ring-green-500 p-3 border"
                             placeholder="Lời nhắn của bạn"
                         />
 
@@ -119,7 +119,7 @@ const ContactPage: React.FC = () => {
                         <motion.button
                             variants={itemVariants}
                             type="submit"
-                            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300"
+                            className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-300"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                         >
@@ -139,7 +139,7 @@ const ContactPage: React.FC = () => {
                         className="w-full md:w-1/2 p-4 sm:p-5 bg-zinc-100 rounded-xl"
                     >
                         <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">
-                            CÔNG TY TNHH MỘT THÀNH VIÊN BẢO LY
+                            CÔNG TY TNHH MỘT THÀNH VIÊN Samora
                         </h3>
                         <address className="not-italic text-sm text-gray-600">
                             <p>Địa chỉ: 15 Chế Lan Viên, Phường Tân Thạnh,</p>

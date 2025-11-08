@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
     
     // Connect to MongoDB
     const client = await clientPromise;
-    const db = client.db("SamNgocLinhDB");
+    const db = client.db("SamoraDB");
     
     // Get total count for pagination
     const total = await db.collection("Orders").countDocuments(query);

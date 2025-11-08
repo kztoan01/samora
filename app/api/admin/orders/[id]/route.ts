@@ -30,7 +30,7 @@ export async function GET(
     
     // Connect to MongoDB
     const client = await clientPromise;
-    const db = client.db("SamNgocLinhDB");
+    const db = client.db("SamoraDB");
     
     // Find the order
     const order = await db.collection("Orders").findOne({ _id: objectId });
@@ -98,7 +98,7 @@ export async function DELETE(
     
     // Connect to MongoDB
     const client = await clientPromise;
-    const db = client.db("SamNgocLinhDB");
+    const db = client.db("SamoraDB");
     
     // First, check if the order exists
     const order = await db.collection("Orders").findOne({ _id: objectId });

@@ -4,7 +4,7 @@ import clientPromise from '@/app/services/lib/mongo';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
     const client = await clientPromise;
-    const db = client.db('SamNgocLinhDB');
+    const db = client.db('SamoraDB');
 
     // Get all products
     const products = await db.collection('Products')

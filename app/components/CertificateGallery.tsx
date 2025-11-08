@@ -52,7 +52,7 @@ const CertificateGallery: React.FC<CertificateProps> = ({
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={containerVariants}
-            className="w-full bg-blue-50 py-12 mt-6"
+            className="w-full bg-green-50 py-12 mt-6"
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
@@ -63,7 +63,7 @@ const CertificateGallery: React.FC<CertificateProps> = ({
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                         <span className="relative">
                             {title}
-                            <span className="absolute -bottom-1 left-0 w-full h-1 bg-blue-500"></span>
+                            <span className="absolute -bottom-1 left-0 w-full h-1 bg-green-500"></span>
                         </span>
                     </h2>
                     <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-gray-800">
@@ -95,7 +95,7 @@ const CertificateGallery: React.FC<CertificateProps> = ({
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                     >
-                                        <div className="aspect-[1/1.414] bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 group-hover:shadow-xl group-hover:border-blue-300 transition-all duration-300">
+                                        <div className="aspect-[1/1.414] bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 group-hover:shadow-xl group-hover:border-green-300 transition-all duration-300">
                                             <div className="relative w-full h-full">
                                                 <Image
                                                     src={item.imageUrl}
@@ -139,7 +139,7 @@ const CertificateGallery: React.FC<CertificateProps> = ({
                         onClick={(e) => e.stopPropagation()}
                     >
                         <button
-                            className="absolute -top-12 right-0 text-white hover:text-blue-300"
+                            className="absolute -top-12 right-0 text-white hover:text-green-300"
                             onClick={closeModal}
                         >
                             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

@@ -19,7 +19,7 @@ const CategoryCard: React.FC<CategoryProps> = ({
   href,
 }) => {
   return (
-    <div className="group relative overflow-hidden rounded-xl bg-white shadow-md transition-all duration-300 hover:shadow-xl border-b-4 border-blue-500">
+    <div className="group relative overflow-hidden rounded-xl bg-white shadow-md transition-all duration-300 hover:shadow-xl border-b-4 border-green-500">
       <Link href={href}>
         <div className="h-64 sm:h-72 md:h-80 lg:h-[30rem] w-full overflow-hidden">
           <div className="relative h-full w-full transition-transform duration-500 group-hover:scale-110">
@@ -40,7 +40,7 @@ const CategoryCard: React.FC<CategoryProps> = ({
           {price && (
             <p className="mt-2 text-base md:text-lg font-semibold text-red-600">{price}</p>
           )}
-          <div className="mt-4 flex items-center text-blue-500 font-semibold">
+          <div className="mt-4 flex items-center text-green-500 font-semibold">
             <span>Xem thêm</span>
             <svg className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -85,12 +85,12 @@ const NgocLinhProductCategories: React.FC = () => {
   ];
 
   return (
-    <section className="mx-auto max-w-8xl px-4 pb-8 pt-24 md:pt-64 bg-blue-50 max-md:mt-24">
+    <section className="mx-auto max-w-8xl px-4 pb-8 pt-24 md:pt-64 bg-green-50 max-md:mt-24">
       <div className="text-center">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           <span className="relative">
-            Sâm Ngọc Linh Bảo Ly
-            <span className="absolute -bottom-1 left-0 w-full h-1 bg-blue-500"></span>
+            Samora
+            <span className="absolute -bottom-1 left-0 w-full h-1 bg-green-500"></span>
           </span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-gray-800">
@@ -105,7 +105,7 @@ const NgocLinhProductCategories: React.FC = () => {
       </div>
       
       <div className="mt-6 text-center">
-      <Link href="/san-pham/ruou-hoa-sam-ngoc-linh" className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 md:px-6 md:py-3 text-xs md:text-base font-medium text-white shadow-sm transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+      <Link href="/san-pham/ruou-hoa-sam-ngoc-linh" className="inline-flex items-center rounded-md border border-transparent bg-green-600 px-4 py-2 md:px-6 md:py-3 text-xs md:text-base font-medium text-white shadow-sm transition-colors hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
           Xem tất cả sản phẩm
           <svg className="ml-3 -mr-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

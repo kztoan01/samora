@@ -108,7 +108,7 @@ export default function IntroSection() {
             <div className="h-full w-full max-w-8xl mx-auto p-4 space-y-3 bg-white">
                 <div className="bg-zinc-100 flex items-center justify-center text-black p-6 rounded-xl overflow-hidden relative">
                     <div className="text-center text-base font-normal">
-                        <span>Về Sâm Ngọc Linh Bảo Ly</span>
+                        <span>Về Samora</span>
                     </div>
                 </div>
 
@@ -121,7 +121,7 @@ export default function IntroSection() {
                                 <div className="md:w-7/12 relative rounded-xl">
                                     <div className="h-[28rem] md:h-[40rem] rounded-lg overflow-hidden">
                                         <Image
-                                            src="/gold3.png"
+                                            src="/Thiết kế chưa có tên (2).png"
                                             alt="Bottom right image"
                                             layout="fill"
                                             objectFit="cover"
@@ -132,13 +132,13 @@ export default function IntroSection() {
                                 <div className="md:w-5/12 p-8 md:p-12 bg-zinc-100 rounded-xl flex flex-col justify-between">
                                     <div>
                                         <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                                            Công Dụng Của Sâm Ngọc Linh Bảo Ly
+                                            Công Dụng Của Samora
                                         </h2>
                                     </div>
 
                                     <div>
                                         <p className="text-gray-800 mb-4 text-sm md:text-base">
-                                            Sâm Ngọc Linh Bảo Ly là sản phẩm cao cấp, kết hợp tinh túy của thiên nhiên giúp <strong>tăng cường sức khỏe toàn diện</strong>.
+                                            Samora là sản phẩm cao cấp, kết hợp tinh túy của thiên nhiên giúp <strong>tăng cường sức khỏe toàn diện</strong>.
                                             Đây là <strong>siêu thảo dược</strong>  với nhiều <strong>dược tính quý giá</strong> , mang lại lợi ích vượt trội cho cơ thể.
                                         </p>
                                         <ul className="text-gray-800 mb-4 text-sm md:text-base list-disc pl-5 space-y-2">
@@ -182,7 +182,7 @@ export default function IntroSection() {
                                 <div className="md:w-7/12 relative rounded-xl">
                                     <div className="h-[28rem] md:h-[40rem] rounded-lg overflow-hidden">
                                         <Image
-                                            src="/sam.png"
+                                            src="/Thiết kế chưa có tên (3).png"
                                             alt="Nguồn Gốc Sâm Ngọc Linh"
                                             layout="fill"
                                             objectFit="cover"

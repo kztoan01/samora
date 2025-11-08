@@ -62,7 +62,7 @@ export default function Home() {
     {
       id: "cert-1",
       title: "CHẤT LƯỢNG",
-      description: "Sâm Ngọc Linh Bảo Ly được lấy từ nguồn gốc sâm của Công ty TNHH KTC Quảng Nam, đây là một đơn vị trồng sâm lớn và chuyên nghiệp tại huyện Nam Trà My, Tỉnh Quảng Nam. Công ty KTC Quảng Nam đã được Sở NNPTNT cấp chỉ dẫn địa lý vườn trồng và đồng thời được sở KHCN Quảng Nam cấp chứng nhận xuất xứ cho củ sâm Ngọc Linh chuẩn Nam Trà My.",
+      description: "Samora được lấy từ nguồn gốc sâm của Công ty TNHH KTC Quảng Nam, đây là một đơn vị trồng sâm lớn và chuyên nghiệp tại huyện Nam Trà My, Tỉnh Quảng Nam. Công ty KTC Quảng Nam đã được Sở NNPTNT cấp chỉ dẫn địa lý vườn trồng và đồng thời được sở KHCN Quảng Nam cấp chứng nhận xuất xứ cho củ sâm Ngọc Linh chuẩn Nam Trà My.",
       items: [
         { id: "iso-9001", imageUrl: "/2022.08.16_QD-cap-QSD-Sam-Ngoc-Linh_Cty-TNHH-KTC-Quang-Nam.signed_page-0001.jpg" },
         { id: "iso-14001", imageUrl: "/2022.08.16_QD-cap-QSD-Sam-Ngoc-Linh_Cty-TNHH-KTC-Quang-Nam.signed_page-0002-566x800.jpg" },
@@ -80,7 +80,7 @@ export default function Home() {
     {
       id: "cert-3",
       title: "CHỨNG NHẬN VSATTP",
-      description: "UBND Tp Tam Kỳ đã cấp chứng nhận Vệ sinh ATTP cho Sâm Ngọc Linh Bảo Ly như đính kèm:",
+      description: "UBND Tp Tam Kỳ đã cấp chứng nhận Vệ sinh ATTP cho Samora như đính kèm:",
       items: [
         { id: "business-reg", imageUrl: "/ATTP.jpeg" },
       ]
@@ -89,7 +89,7 @@ export default function Home() {
     {
       id: "cert-4",
       title: "CHỈ DẪN ĐỊA LÝ",
-      description: "Vườn sâm Ngọc linh của Công ty TNHH MTV Bảo Ly được nằm trong vùng sâm gốc của huyện Nam Trà My và đã được công bố chỉ dẫn địa lý như đính kèm.",
+      description: "Vườn sâm Ngọc linh của Công ty TNHH MTV Samora được nằm trong vùng sâm gốc của huyện Nam Trà My và đã được công bố chỉ dẫn địa lý như đính kèm.",
       items: [
         { id: "business-reg", imageUrl: "/Chung-nhan-cu-Sam-Ngoc-Linh.jpeg" },
       ]
@@ -120,16 +120,16 @@ export default function Home() {
     <SamNgocLinhBanner/>
     
         <RuouLaPage/>
-        <RuouHoaPage/>
-        <ProductsSection/> 
-    
+        {/* <RuouHoaPage/>
+        <ProductsSection/>  */}
+{/*     
     <div id="chung-chi">
       <CertificateGallery 
         categories={certificateCategories} 
         title="Chứng nhận chất lượng" 
         subtitle="Các giấy tờ pháp lý và chứng nhận của sản phẩm Sâm Ngọc Linh" 
       />
-    </div>
+    </div> */}
     <Suspense fallback={<CategorySkeleton />}>
         <CategorySectionDynamic />
     </Suspense>

@@ -101,7 +101,7 @@ export default function CategorySection() {
                         >
                             <div className="relative w-full h-full">
                                 <Image
-                                    src="/gold.png"
+                                    src="/Thiết kế chưa có tên (2).png"
                                     alt="Left side image"
                                     fill
                                     style={{ objectFit: "cover" }}
@@ -112,7 +112,7 @@ export default function CategorySection() {
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.6, delay: 0.2 }}
-                                        className="backdrop-blur-md bg-blue-700/70 p-3 sm:p-6 rounded-2xl text-white"
+                                        className="backdrop-blur-md bg-green-700/70 p-3 sm:p-6 rounded-2xl text-white"
                                     >
                                         <h2 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Rượu Sâm Ngọc Linh</h2>
                                         <p className="text-gray-200 text-xs sm:text-sm mb-1 sm:mb-2 line-clamp-3 sm:line-clamp-none">
@@ -139,7 +139,7 @@ export default function CategorySection() {
                                     className="w-full sm:col-span-2 relative rounded-lg overflow-hidden shadow-lg h-[30vh] sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]"
                                 >
                                     <Image
-                                        src="/Rượu lá Sâm Ngọc Linh bình 500 ML_4.png"
+                                        src="/Thiết kế chưa có tên (3).png"
                                         alt="Top right image"
                                         layout="fill"
                                         style={{ objectFit: "cover" }}
@@ -150,7 +150,7 @@ export default function CategorySection() {
                                 {/* Top Right Card (full width on mobile, 1/3 on tablet+) */}
                                 <motion.div 
                                     variants={itemVariants}
-                                    className="w-full sm:col-span-1 bg-blue-700 p-3 sm:p-4 md:p-6 rounded-lg flex flex-col h-auto sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]"
+                                    className="w-full sm:col-span-1 bg-green-700 p-3 sm:p-4 md:p-6 rounded-lg flex flex-col h-auto sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]"
                                 >
                                     {/* Title at the top */}
                                     <h3 className="text-base sm:text-lg font-bold mb-1 sm:mb-2 text-gray-200">Rượu Lá Sâm Ngọc Linh</h3>
@@ -174,10 +174,10 @@ export default function CategorySection() {
                                 {/* Bottom Left Card (full width on mobile, 1/3 on tablet+) */}
                                 <motion.div 
                                     variants={itemVariants}
-                                    className="w-full sm:col-span-1 bg-blue-700 p-3 sm:p-4 md:p-6 rounded-lg flex flex-col h-auto sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]"
+                                    className="w-full sm:col-span-1 bg-green-700 p-3 sm:p-4 md:p-6 rounded-lg flex flex-col h-auto sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]"
                                 >
                                     <h3 className="text-base sm:text-lg font-bold mb-1 sm:mb-2 text-gray-200">
-                                        Sâm Yến Bảo Ly
+                                        Sâm Yến Samora
                                     </h3>
 
                                     {/* Mô tả sản phẩm */}
@@ -199,7 +199,7 @@ export default function CategorySection() {
                                     className="w-full sm:col-span-2 relative rounded-lg overflow-hidden shadow-lg h-[30vh] sm:h-[25vh] lg:h-[calc((100vh-140px)/2-8px)]"
                                 >
                                     <Image
-                                        src="/yen.png"
+                                        src="/logo.png"
                                         alt="Bottom right image"
                                         layout="fill"
                                         style={{ objectFit: "cover" }}

@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
       
       // Kết nối tới MongoDB
       const client = await clientPromise;
-      const db = client.db("SamNgocLinhDB");
+      const db = client.db("SamoraDB");
       
       // Kiểm tra tồn kho của sản phẩm trước khi tạo đơn hàng
     //   for (const item of items) {
@@ -262,7 +262,7 @@ export async function GET(request: NextRequest) {
     }
     
     const client = await clientPromise;
-    const db = client.db("SamNgocLinhDB");
+    const db = client.db("SamoraDB");
     
     let query = {};
     

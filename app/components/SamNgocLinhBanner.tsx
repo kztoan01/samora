@@ -3,10 +3,10 @@ import React from 'react';
 
 const SamNgocLinhBanner = () => {
   return (
-    <div className="relative flex flex-col md:flex-row items-center justify-between bg-blue-50 p-6 mx-4 mb-16 mt-16 md:p-12 rounded-lg shadow-lg overflow-hidden">
+    <div className="relative flex flex-col md:flex-row items-center justify-between bg-green-50 p-6 mx-4 mb-16 mt-16 md:p-12 rounded-lg shadow-lg overflow-hidden">
       {/* Tạo hiệu ứng nền */}
-      <div className="absolute inset-0 bg-blue-100 opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-200 to-blue-50"></div>
+      <div className="absolute inset-0 bg-green-100 opacity-30">
+        <div className="absolute inset-0 bg-gradient-to-r from-green-200 to-green-50"></div>
       </div>
       
       {/* Nội dung bên trái */}
@@ -36,7 +36,7 @@ const SamNgocLinhBanner = () => {
       </div>
       
       {/* Trang trí phụ */}
-      <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200"></div>
+      <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-green-200 via-green-100 to-green-200"></div>
     </div>
   );
 };

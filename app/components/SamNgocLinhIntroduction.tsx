@@ -106,7 +106,7 @@ const SamNgocLinhIntroduction = () => {
                                 <span className="inline-block text-xs text-green-700 font-light bg-green-50 border border-green-200 px-2 py-1 rounded">
                                     Thảo dược quý
                                 </span>
-                                <span className="inline-block text-xs text-blue-700 font-light bg-blue-50 border border-blue-200 px-2 py-1 rounded">
+                                <span className="inline-block text-xs text-green-700 font-light bg-green-50 border border-green-200 px-2 py-1 rounded">
                                     Di sản Việt Nam
                                 </span>
                             </div>

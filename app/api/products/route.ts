@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
     const slug = slugMatch ? slugMatch[1] : null;
     
     const client = await clientPromise;
-    const db = client.db('SamNgocLinhDB');
+    const db = client.db('SamoraDB');
     
     // Nếu có slug trong URL, lấy sản phẩm theo slug
     if (slug) {
@@ -226,7 +226,7 @@ export async function POST(request: NextRequest) {
 
     // ✅ Save product to MongoDB
     const client = await clientPromise;
-    const db = client.db('SamNgocLinhDB');
+    const db = client.db('SamoraDB');
     const result = await db.collection<Product>('Products').insertOne(productData as Product);
 
     return NextResponse.json({

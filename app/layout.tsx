@@ -15,14 +15,14 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Sâm Ngọc Linh Bảo Ly - Thảo Dược Quý Cho Sức Khỏe",
+  title: "Samora - Thảo Dược Quý Cho Sức Khỏe",
   description:
-    "Sâm Ngọc Linh Bảo Ly chuyên cung cấp các sản phẩm sâm Ngọc Linh chất lượng cao, hỗ trợ sức khỏe và tăng cường đề kháng. Cam kết 100% sản phẩm thiên nhiên, đạt chuẩn chất lượng.",
-  applicationName: "Sâm Ngọc Linh Bảo Ly",
-  authors: [{ name: "Bảo Ly", url: "https://www.samngoclinhbaoly.vn" }],
+    "Samora chuyên cung cấp các sản phẩm sâm Ngọc Linh chất lượng cao, hỗ trợ sức khỏe và tăng cường đề kháng. Cam kết 100% sản phẩm thiên nhiên, đạt chuẩn chất lượng.",
+  applicationName: "Samora",
+  authors: [{ name: "Samora", url: "https://www.samngoclinhbaoly.vn" }],
   keywords: [
     "Sâm Ngọc Linh",
-    "Sâm Bảo Ly",
+    "Sâm Samora",
     "Thảo dược quý",
     "Sâm Việt Nam",
     "Sâm Ngọc Linh nguyên chất",
@@ -33,20 +33,20 @@ export const metadata: Metadata = {
   ],
   themeColor: "#A67C52",
   colorScheme: "light",
-  creator: "Bảo Ly Team",
-  publisher: "Sâm Ngọc Linh Bảo Ly",
+  creator: "Samora Team",
+  publisher: "Samora",
   openGraph: {
-    title: "Sâm Ngọc Linh Bảo Ly - Thảo Dược Quý Cho Sức Khỏe",
+    title: "Samora - Thảo Dược Quý Cho Sức Khỏe",
     description:
       "Cung cấp sâm Ngọc Linh chất lượng cao, 100% thiên nhiên, hỗ trợ sức khỏe và tăng cường đề kháng. Đảm bảo nguồn gốc xuất xứ rõ ràng, đạt chuẩn chất lượng.",
     url: "https://www.samngoclinhbaoly.vn",
-    siteName: "Sâm Ngọc Linh Bảo Ly",
+    siteName: "Samora",
     images: [
       {
-        url: "https://www.samngoclinhbaoly.vn/gold3.png",
+        url: "https://www.samngoclinhbaoly.vn/Thiết kế chưa có tên (2).png",
         width: 1200,
         height: 630,
-        alt: "Sâm Ngọc Linh Bảo Ly - Thảo Dược Quý",
+        alt: "Samora - Thảo Dược Quý",
       },
     ],
     locale: "vi_VN",
@@ -55,13 +55,13 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@SamBaoLy",
-    title: "Sâm Ngọc Linh Bảo Ly - Thảo Dược Quý Cho Sức Khỏe",
+    title: "Samora - Thảo Dược Quý Cho Sức Khỏe",
     description:
-      "Sâm Ngọc Linh Bảo Ly cam kết cung cấp sản phẩm sâm Ngọc Linh chất lượng cao, giúp bồi bổ sức khỏe và tăng cường miễn dịch.",
+      "Samora cam kết cung cấp sản phẩm sâm Ngọc Linh chất lượng cao, giúp bồi bổ sức khỏe và tăng cường miễn dịch.",
     images: [
       {
-        url: "https://www.samngoclinhbaoly.vn/gold3.png",
-        alt: "Sâm Ngọc Linh Bảo Ly - Thảo Dược Quý",
+        url: "https://www.samngoclinhbaoly.vn/Thiết kế chưa có tên (2).png",
+        alt: "Samora - Thảo Dược Quý",
       },
     ],
   },
@@ -77,8 +77,8 @@ export const metadata: Metadata = {
     google: "c9lj3WseNZ1hfM78XO7hH34kuUuRIPoulKQi_k87GjI",
   },
   other: {
-    "apple-mobile-web-app-title": "Sâm Ngọc Linh Bảo Ly",
-    "application-name": "Sâm Ngọc Linh Bảo Ly",
+    "apple-mobile-web-app-title": "Samora",
+    "application-name": "Samora",
     "google-site-verification": "c9lj3WseNZ1hfM78XO7hH34kuUuRIPoulKQi_k87GjI"
   },
 };

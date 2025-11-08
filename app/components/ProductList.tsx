@@ -185,17 +185,20 @@ export default function ProductList({ products, isChebien }: ProductListProps) {
                             <div className="bg-white rounded-xl overflow-hidden transition-opacity duration-300 relative group ">
                                 <div className="absolute inset-0 bg-gradient-to-t from-green-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                                <motion.img
-                                    src={product.images[0]}
-                                    alt={product.name}
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ duration: 0.5, delay: 0.2 }}
-                                    className="w-full h-[12rem] sm:h-[16rem] md:h-[22rem] lg:h-[26rem] xl:h-[30rem] object-cover transition-transform duration-500 group-hover:scale-110"
-                                />
+                                <motion.div className="w-full h-full overflow-hidden">
+                                    <motion.img
+                                        src={product.images[0]}
+                                        alt={product.name}
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ duration: 0.5, delay: 0.2 }}
+                                        className="w-full h-[12rem] sm:h-[16rem] md:h-[22rem] lg:h-[26rem] xl:h-[30rem] object-cover transition-transform duration-500 group-hover:scale-110"
+                                        style={{ objectPosition: '60% center' }}
+                                    />
+                                </motion.div>
 
                                 {/* Price badge - visible on mobile and on hover for larger screens */}
-                                <div className="absolute bottom-2 left-2 bg-blue-500 p-1.5 sm:p-2 rounded-lg shadow-md sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300">
+                                <div className="absolute bottom-2 left-2 bg-green-500 p-1.5 sm:p-2 rounded-lg shadow-md sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300">
                                     <p className="text-[0.55rem] sm:text-xs md:text-sm font-semibold text-white">
                                         {formatProductPrice(product)}
                                     </p>
