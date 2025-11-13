@@ -20,6 +20,9 @@ export default function Nav() {
       title: 'Sản Phẩm', href: '/san-pham', dropdown: [
         { title: 'Rượu Sâm Ngọc Linh 700ml', href: '/san-pham/ruou-sam-ngoc-linh', image: '/Thiết kế chưa có tên (2).png' },
         { title: 'Rượu Sâm Ngọc Linh 500ml', href: '/san-pham/ruou-sam-ngoc-linh', image: '/Thiết kế chưa có tên (3).png' },
+        { title: 'Rượu Sâm Ngọc Linh 3000ml', href: '/san-pham/ruou-sam-ngoc-linh', image: '/3l.jpg' },
+        { title: 'Rượu Sâm Ngọc Linh 2000ml', href: '/san-pham/ruou-sam-ngoc-linh', image: '/2l.jpg' },
+        { title: 'Rượu Sâm Ngọc Linh 1800ml', href: '/san-pham/ruou-sam-ngoc-linh', image: '/1l8.jpg' },
         // { title: 'Rượu Lá Sâm Ngọc Linh', href: '/san-pham/ruou-la-sam-ngoc-linh', image: '/la3l.png' },
         // { title: 'Rượu Hoa Sâm Ngọc Linh', href: '/san-pham/ruou-hoa-sam-ngoc-linh', image: '/hoa1l.png' },
         // { title: 'Rượu Sâm Ngọc Linh Cây Và Củ', href: '/san-pham/ruou-sam-ngoc-linh-cay-cu', image: '/caycu.png' },
@@ -167,7 +170,7 @@ export default function Nav() {
                                   width={112}
                                   height={112}
                                   loading="lazy"
-                                  className="h-28 w-28 mr-4 rounded-xl"
+                                  className="h-28 w-28 mr-4 rounded-xl object-cover"
                                 />
                                 <span>{subItem.title}</span>
                               </Link>

@@ -142,7 +142,7 @@ export default function ProductList({ products, isChebien }: ProductListProps) {
 
 
             {/* Cards container */}
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-0 md:gap-0 relative z-20">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-0 md:gap-0 relative z-20">
                 {sortedProducts.map((product) => (
                     <motion.div
                         key={product._id}
